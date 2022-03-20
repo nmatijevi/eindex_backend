@@ -1,4 +1,4 @@
-package hr.tvz.eindex.user;
+package hr.tvz.eindex.profesor;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
@@ -8,12 +8,13 @@ import java.util.Optional;
 
 @Repository
 @Primary
-public interface userRepositoryJdbc {
-    List<User> findAll();
+public interface ProfRepositoryJdbc {
 
-    List<User> findUserByFirstName(String firstName);
+    List<Profesor> findAll();
+
+    List<Profesor> findProfesorByFirstName(String firstName);
 
     boolean deleteByFirstName(String firstName);
 
-    Optional<User> save(User user);
+    Optional<Profesor> save(Profesor profesor);
 }

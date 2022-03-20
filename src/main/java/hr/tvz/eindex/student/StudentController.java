@@ -1,4 +1,4 @@
-package hr.tvz.eindex.user;
+package hr.tvz.eindex.student;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,39 +8,39 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("student")
 @CrossOrigin(origins = "http://localhost:4200")
-public class UserController {
+public class StudentController {
 
-    private final UserService userService;
+    private final StudentService studentService;
 
-    public UserController(UserService userService){
-        this.userService = userService;
+    public StudentController(StudentService studentService){
+        this.studentService = studentService;
     }
 
     @GetMapping
-    public List<UserDTO> getAllUser(){
-        return userService.findAll();
+    public List<StudentDTO> getAllStudent(){
+        return studentService.findAll();
     }
 
     @GetMapping("/{firstName}")
-    public List<User> getUserByFirstName(@PathVariable final String firstName){
-        return userService.findUserByFirstName(firstName);
+    public List<Student> getUserByFirstName(@PathVariable final String firstName){
+        return studentService.findStudentByFirstName(firstName);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{firstName}")
     public void delete(@PathVariable String firstName){
-        userService.deleteByFirstName(firstName);
+        studentService.deleteByFirstName(firstName);
     }
 
     @PostMapping
-    public ResponseEntity<UserDTO> save(@Valid @RequestBody final UserCommand command){
-        return userService.save(command)
+    public ResponseEntity<StudentDTO> save(@Valid @RequestBody final StudentCommand command){
+        return studentService.save(command)
                 .map(
-                        userDTO -> ResponseEntity
+                        studentDTO -> ResponseEntity
                             .status(HttpStatus.CREATED)
-                            .body(userDTO)
+                            .body(studentDTO)
                 )
                 .orElseGet(
                         () -> ResponseEntity

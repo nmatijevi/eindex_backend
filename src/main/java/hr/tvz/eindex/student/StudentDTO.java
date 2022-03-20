@@ -1,6 +1,6 @@
-package hr.tvz.eindex.user;
+package hr.tvz.eindex.student;
 
-public class UserDTO {
+public class StudentDTO {
 
     private long id;
 
@@ -8,7 +8,7 @@ public class UserDTO {
     private String lastName;
     private String title;
 
-    public UserDTO(long id, String firstName, String lastName, String title) {
+    public StudentDTO(long id, String firstName, String lastName, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

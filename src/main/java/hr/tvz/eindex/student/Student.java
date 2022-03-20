@@ -1,12 +1,12 @@
-package hr.tvz.eindex.user;
+package hr.tvz.eindex.student;
 
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Users")
-public class User implements Serializable {
+@Table(name = "Student")
+public class Student implements Serializable {
 
     @Id
     @Column(name="id")
@@ -22,13 +22,13 @@ public class User implements Serializable {
     @Column(name = "title")
     private String title;
 
-    public User(long id, String firstName, String lastName, String title) {
+    public Student(long id, String firstName, String lastName, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
     }
-    public User(){
+    public Student(){
 
     }
 
