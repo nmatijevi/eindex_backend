@@ -17,6 +17,9 @@ public class StudentCommand {
     private String lastName;
 
     @NotBlank(message = "Must not be empty")
+    private String email;
+
+    @NotBlank(message = "Must not be empty")
     private String title;
 
     public long getId() {
@@ -49,5 +52,13 @@ public class StudentCommand {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

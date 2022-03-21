@@ -1,5 +1,6 @@
 package hr.tvz.eindex.profesor;
 
+import hr.tvz.eindex.student.Student;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Primary
@@ -36,15 +39,25 @@ public class JdbcProfRepository implements ProfRepositoryJdbc{
 
     @Override
     public boolean deleteByFirstName(String firstName) {
-        return false;
+        Object[] args = new Object[] {firstName};
+        return  jdbc.update("DELETE FROM Profesor where firstName = ?",args) == 1;
     }
-
 
 
     @Override
-    public Optional<Profesor> save(Profesor profesor) {
-        return Optional.empty();
+    public Optional<Profesor> save(final Profesor profesor) {
+        profesor.setId(saveProfesorDetails(profesor));
+        return Optional.of(profesor);
     }
+    private long saveProfesorDetails(Profesor profesor){
+        Map<String, Object> values = new HashMap<>();
+        values.put("firstName", profesor.getFirstName());
+        values.put("lastName", profesor.getLastName());
+        values.put("email", profesor.getEmail());
+        values.put("title", profesor.getTitle());
+        return profInserter.executeAndReturnKey(values).longValue();
+    }
+
 
 
     private Profesor mapRowToProfesor(ResultSet rs, int rowNum) throws SQLException {

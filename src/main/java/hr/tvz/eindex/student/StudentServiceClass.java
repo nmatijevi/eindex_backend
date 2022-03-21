@@ -31,13 +31,13 @@ public class StudentServiceClass implements StudentService, Serializable {
     }
 
     private StudentDTO mapUserToDTO(final Student student){
-        return new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getTitle());
+        return new StudentDTO(student.getId(), student.getFirstName(), student.getLastName(), student.getEmail(),student.getTitle());
     }
     private Student mapCommandToUser(final StudentCommand command){
-        return new Student(command.getId(), command.getFirstName(), command.getLastName(), command.getTitle());
+        return new Student(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle());
     }
     private StudentDTO mapCommandToUserDTO(final StudentCommand command){
-        return new StudentDTO(command.getId(), command.getFirstName(), command.getLastName(), command.getTitle());
+        return new StudentDTO(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle());
     }
 
     @Override

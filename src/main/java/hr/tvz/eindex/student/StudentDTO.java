@@ -6,12 +6,14 @@ public class StudentDTO {
 
     private String firstName;
     private String lastName;
+    private String email;
     private String title;
 
-    public StudentDTO(long id, String firstName, String lastName, String title) {
+    public StudentDTO(long id, String firstName, String lastName, String email ,String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.title = title;
     }
 
@@ -45,5 +47,13 @@ public class StudentDTO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

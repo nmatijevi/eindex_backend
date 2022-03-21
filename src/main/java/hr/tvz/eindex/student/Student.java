@@ -19,15 +19,20 @@ public class Student implements Serializable {
     @Column(name = "lastName")
     private String lastName;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "title")
     private String title;
 
-    public Student(long id, String firstName, String lastName, String title) {
+    public Student(long id, String firstName, String lastName, String email, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.title = title;
     }
+
     public Student(){
 
     }
@@ -62,5 +67,13 @@ public class Student implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
