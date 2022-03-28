@@ -23,9 +23,9 @@ public class ProfesorController {
         return profesorService.findAll();
     }
 
-    @GetMapping("/{firstName}")
-    public List<Profesor> getProfesorByFirstName(@PathVariable final String firstName){
-        return profesorService.findProfesorByFirstName(firstName);
+    @GetMapping("/{id}")
+    public List<Profesor> getProfesorByFirstName(@PathVariable final long id){
+        return profesorService.findProfesorById(id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -33,8 +33,8 @@ public class JdbcProfRepository implements ProfRepositoryJdbc{
     }
 
     @Override
-    public List<Profesor> findProfesorByFirstName(String firstName) {
-        return jdbc.query("Select * from Profesor where firstName = ?", this::mapRowToProfesor, firstName);
+    public List<Profesor> findProfesorById(long id) {
+        return jdbc.query("Select * from Profesor where id = ?", this::mapRowToProfesor, id);
     }
 
     @Override

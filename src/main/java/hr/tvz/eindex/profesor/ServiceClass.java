@@ -22,8 +22,8 @@ public class ServiceClass implements ProfesorService, Serializable {
     }
 
     @Override
-    public List<Profesor> findProfesorByFirstName(String firstName) {
-        return profRepositoryJdbc.findProfesorByFirstName(firstName);
+    public List<Profesor> findProfesorById(long id) {
+        return profRepositoryJdbc.findProfesorById(id);
     }
 
     @Override

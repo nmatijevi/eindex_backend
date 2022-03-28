@@ -8,9 +8,11 @@ interface StudentRepository {
 
     List<Student> findAll();
 
-    List<Student> findUserByFirstName(String firstName);
+    Student findUserById(long id);
 
     boolean deleteById(Long id);
 
     Optional<Student> save(Student student);
+
+    Optional<Student> update(long id, Student student);
 }

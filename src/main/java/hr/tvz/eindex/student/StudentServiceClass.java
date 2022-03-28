@@ -1,5 +1,6 @@
 package hr.tvz.eindex.student;
 
+import hr.tvz.eindex.kolegij.KolegijCommand;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -26,8 +27,8 @@ public class StudentServiceClass implements StudentService, Serializable {
  //       return userRepositoryJdbc.findUserByFirstName(firstName).map(this::mapUserToDTO).orElse(null);
   //  }
     @Override
-    public List<Student> findStudentByFirstName(String firstName) {
-        return studentRepositoryJdbc.findStudentByFirstName(firstName);
+    public Student findStudentById(long id) {
+        return studentRepositoryJdbc.findStudentById(id);
     }
 
     private StudentDTO mapUserToDTO(final Student student){
@@ -48,5 +49,10 @@ public class StudentServiceClass implements StudentService, Serializable {
     @Override
     public Optional<StudentDTO> save(StudentCommand command) {
         return studentRepositoryJdbc.save(mapCommandToUser(command)).map(this::mapUserToDTO);
+    }
+
+    @Override
+    public Optional<StudentDTO> update(long id, StudentCommand command) {
+        return studentRepositoryJdbc.update(id, mapCommandToUser(command)).map(this::mapUserToDTO);
     }
 }

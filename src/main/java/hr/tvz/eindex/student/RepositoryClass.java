@@ -16,7 +16,7 @@ public class RepositoryClass implements StudentRepository, Serializable {
     }
 
     @Override
-    public List<Student> findUserByFirstName(String firstName) {
+    public Student findUserById(long id) {
         return null;
     }
 
@@ -27,6 +27,11 @@ public class RepositoryClass implements StudentRepository, Serializable {
 
     @Override
     public Optional<Student> save(Student student) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Student> update(long id, Student student) {
         return Optional.empty();
     }
 /*

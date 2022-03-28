@@ -11,9 +11,10 @@ import java.util.Optional;
 public interface StudentRepositoryJdbc {
     List<Student> findAll();
 
-    List<Student> findStudentByFirstName(String firstName);
+    Student findStudentById(long id);
 
     boolean deleteById(Long id);
 
     Optional<Student> save(Student student);
+    Optional<Student> update(long id, Student student);
 }

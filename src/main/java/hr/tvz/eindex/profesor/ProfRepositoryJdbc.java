@@ -12,7 +12,7 @@ public interface ProfRepositoryJdbc {
 
     List<Profesor> findAll();
 
-    List<Profesor> findProfesorByFirstName(String firstName);
+    List<Profesor> findProfesorById(long id);
 
     boolean deleteById(Long id);
 

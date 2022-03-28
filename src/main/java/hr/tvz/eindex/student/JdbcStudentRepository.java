@@ -33,8 +33,8 @@ public class JdbcStudentRepository implements StudentRepositoryJdbc {
     }
 
     @Override
-    public List<Student> findStudentByFirstName(final String firstName) {
-            return jdbc.query("Select * from Student where firstName = ?", this::mapRowToStudents, firstName);
+    public Student findStudentById(final long id) {
+            return jdbc.queryForObject("Select * from Student where id = ?", this::mapRowToStudents, id);
         }
 
     @Override
@@ -67,4 +67,27 @@ public class JdbcStudentRepository implements StudentRepositoryJdbc {
         student.setTitle(rs.getString("title"));
         return student;
     }
+
+    @Override
+    public Optional<Student> update(long id, Student student) {
+        int executed = jdbc.update("UPDATE student set " +
+                "firstName = ?, " +
+                "lastName = ?," +
+                "email = ?," +
+                "title = ?" +
+                "WHERE id = ?",
+                student.getFirstName(),
+                student.getLastName(),
+                student.getEmail(),
+                student.getTitle(),
+                student.getId()
+                );
+
+       if(executed > 0){
+           return Optional.of(student);
+       }else{
+           return Optional.empty();
+       }
+    }
+
 }

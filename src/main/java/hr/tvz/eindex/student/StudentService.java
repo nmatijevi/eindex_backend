@@ -1,5 +1,6 @@
 package hr.tvz.eindex.student;
 
+import hr.tvz.eindex.kolegij.KolegijCommand;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +11,11 @@ public interface StudentService {
 
     List<StudentDTO> findAll();
 
-    List<Student> findStudentByFirstName(String firstName);
+    Student findStudentById(long id);
 
     boolean deleteById(Long firstName);
 
     Optional<StudentDTO> save(StudentCommand command);
 
+    Optional<StudentDTO> update(long id, StudentCommand command);
 }

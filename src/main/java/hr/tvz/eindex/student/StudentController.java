@@ -1,5 +1,7 @@
 package hr.tvz.eindex.student;
 
+import hr.tvz.eindex.kolegij.KolegijCommand;
+import hr.tvz.eindex.kolegij.KolegijDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +25,9 @@ public class StudentController {
         return studentService.findAll();
     }
 
-    @GetMapping("/{firstName}")
-    public List<Student> getUserByFirstName(@PathVariable final String firstName){
-        return studentService.findStudentByFirstName(firstName);
+    @GetMapping("/{id}")
+    public Student getUserById(@PathVariable final long id){
+        return studentService.findStudentById(id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -46,6 +48,16 @@ public class StudentController {
                         () -> ResponseEntity
                                 .status(HttpStatus.CONFLICT)
                                 .build()
+                );
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StudentDTO> update(@PathVariable long id, @Valid @RequestBody
+    final StudentCommand command){
+        return studentService.update(id, command)
+                .map(ResponseEntity::ok)
+                .orElseGet(
+                        () -> ResponseEntity.notFound().build()
                 );
     }
 }

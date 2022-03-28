@@ -10,7 +10,7 @@ public interface ProfesorService {
 
     List<ProfesorDTO> findAll();
 
-    List<Profesor> findProfesorByFirstName(String firstName);
+    List<Profesor> findProfesorById(long id);
 
     boolean deleteById(Long id);
 
