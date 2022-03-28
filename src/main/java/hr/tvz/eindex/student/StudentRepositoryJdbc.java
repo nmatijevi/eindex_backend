@@ -13,7 +13,7 @@ public interface StudentRepositoryJdbc {
 
     List<Student> findStudentByFirstName(String firstName);
 
-    boolean deleteByFirstName(String firstName);
+    boolean deleteById(Long id);
 
     Optional<Student> save(Student student);
 }

@@ -21,7 +21,7 @@ public class RepositoryClass implements StudentRepository, Serializable {
     }
 
     @Override
-    public boolean deleteByFirstName(String firstName) {
+    public boolean deleteById(Long id) {
         return false;
     }
 

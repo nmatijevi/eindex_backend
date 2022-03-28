@@ -1,5 +1,7 @@
 package hr.tvz.eindex.profesor;
 
+import hr.tvz.eindex.student.Student;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -23,6 +25,8 @@ public class Profesor implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+
 
     public Profesor(long id, String firstName, String lastName, String email, String title) {
         this.id = id;

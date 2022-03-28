@@ -1,7 +1,5 @@
 package hr.tvz.eindex.profesor;
 
-import hr.tvz.eindex.student.Student;
-import hr.tvz.eindex.student.StudentCommand;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -29,8 +27,8 @@ public class ServiceClass implements ProfesorService, Serializable {
     }
 
     @Override
-    public boolean deleteByFirstName(String firstName) {
-        return profRepositoryJdbc.deleteByFirstName(firstName);
+    public boolean deleteById(Long id) {
+        return profRepositoryJdbc.deleteById(id);
     }
 
     @Override

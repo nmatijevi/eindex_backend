@@ -38,9 +38,9 @@ public class JdbcStudentRepository implements StudentRepositoryJdbc {
         }
 
     @Override
-    public boolean deleteByFirstName(String firstName) {
-        Object[] args = new Object[] {firstName};
-        return  jdbc.update("DELETE FROM Student where firstName = ?",args) == 1;
+    public boolean deleteById(Long id) {
+        Object[] args = new Object[] {id};
+        return  jdbc.update("DELETE FROM Student where id = ?",args) == 1;
     }
 
     @Override

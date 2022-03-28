@@ -12,7 +12,7 @@ public interface ProfesorService {
 
     List<Profesor> findProfesorByFirstName(String firstName);
 
-    boolean deleteByFirstName(String firstName);
+    boolean deleteById(Long id);
 
     Optional<ProfesorDTO> save(ProfesorCommand command);
 }

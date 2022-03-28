@@ -29,9 +29,9 @@ public class StudentController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{firstName}")
-    public void delete(@PathVariable String firstName){
-        studentService.deleteByFirstName(firstName);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        studentService.deleteById(id);
     }
 
     @PostMapping

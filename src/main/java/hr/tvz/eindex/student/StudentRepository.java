@@ -10,7 +10,7 @@ interface StudentRepository {
 
     List<Student> findUserByFirstName(String firstName);
 
-    boolean deleteByFirstName(String firstName);
+    boolean deleteById(Long id);
 
     Optional<Student> save(Student student);
 }

@@ -1,8 +1,12 @@
 package hr.tvz.eindex.student;
 
 
+import hr.tvz.eindex.kolegij.Kolegij;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Student")
@@ -24,6 +28,16 @@ public class Student implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+     @ManyToMany(targetEntity = Kolegij.class)
+     @JoinTable(
+             name = "StudentKolegij",
+             joinColumns = { @JoinColumn(name = "studentId") },
+             inverseJoinColumns = { @JoinColumn(name = "kolegijId") }
+     )
+     private List<Kolegij> kolegijList;
+
+
 
     public Student(long id, String firstName, String lastName, String email, String title) {
         this.id = id;
@@ -75,5 +89,18 @@ public class Student implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        Student student = (Student) o;
+        return getId() == student.getId() && getFirstName().equals(student.getFirstName()) && getLastName().equals(student.getLastName()) && getEmail().equals(student.getEmail()) && getTitle().equals(student.getTitle()) && kolegijList.equals(student.kolegijList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getTitle(), kolegijList);
     }
 }

@@ -14,7 +14,7 @@ public interface ProfRepositoryJdbc {
 
     List<Profesor> findProfesorByFirstName(String firstName);
 
-    boolean deleteByFirstName(String firstName);
+    boolean deleteById(Long id);
 
     Optional<Profesor> save(Profesor profesor);
 }

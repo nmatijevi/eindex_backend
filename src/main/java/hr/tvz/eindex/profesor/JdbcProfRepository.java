@@ -38,9 +38,9 @@ public class JdbcProfRepository implements ProfRepositoryJdbc{
     }
 
     @Override
-    public boolean deleteByFirstName(String firstName) {
-        Object[] args = new Object[] {firstName};
-        return  jdbc.update("DELETE FROM Profesor where firstName = ?",args) == 1;
+    public boolean deleteById(Long id) {
+        Object[] args = new Object[] {id};
+        return  jdbc.update("DELETE FROM Profesor where id = ?",args) == 1;
     }
 
 

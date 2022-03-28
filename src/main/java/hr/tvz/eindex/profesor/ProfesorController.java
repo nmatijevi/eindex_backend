@@ -1,8 +1,5 @@
 package hr.tvz.eindex.profesor;
 
-import hr.tvz.eindex.student.Student;
-import hr.tvz.eindex.student.StudentCommand;
-import hr.tvz.eindex.student.StudentDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +29,9 @@ public class ProfesorController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{firstName}")
-    public void delete(@PathVariable String firstName){
-        profesorService.deleteByFirstName(firstName);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        profesorService.deleteById(id);
     }
 
     @PostMapping

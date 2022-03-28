@@ -41,8 +41,8 @@ public class StudentServiceClass implements StudentService, Serializable {
     }
 
     @Override
-    public boolean deleteByFirstName(String firstName) {
-        return studentRepositoryJdbc.deleteByFirstName(firstName);
+    public boolean deleteById(Long id) {
+        return studentRepositoryJdbc.deleteById(id);
     }
 
     @Override

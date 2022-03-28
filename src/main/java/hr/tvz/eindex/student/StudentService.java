@@ -12,7 +12,7 @@ public interface StudentService {
 
     List<Student> findStudentByFirstName(String firstName);
 
-    boolean deleteByFirstName(String firstName);
+    boolean deleteById(Long firstName);
 
     Optional<StudentDTO> save(StudentCommand command);
 
