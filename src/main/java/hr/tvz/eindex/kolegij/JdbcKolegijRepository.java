@@ -1,6 +1,5 @@
 package hr.tvz.eindex.kolegij;
 
-import hr.tvz.eindex.student.Student;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;

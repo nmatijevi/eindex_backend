@@ -1,6 +1,6 @@
 package hr.tvz.eindex.kolegij;
 
-import hr.tvz.eindex.student.Student;
+import hr.tvz.eindex.user.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,8 +19,8 @@ public class Kolegij {
     private String name;
 
 
-    @ManyToMany(targetEntity = Student.class, mappedBy = "kolegijList")
-    private List<Student> studentList;
+    @ManyToMany(targetEntity = User.class, mappedBy = "kolegijList")
+    private List<User> userList;
 
 
 
@@ -55,11 +55,11 @@ public class Kolegij {
         if (this == o) return true;
         if (!(o instanceof Kolegij)) return false;
         Kolegij kolegij = (Kolegij) o;
-        return getId() == kolegij.getId() && getName().equals(kolegij.getName()) && studentList.equals(kolegij.studentList);
+        return getId() == kolegij.getId() && getName().equals(kolegij.getName()) && userList.equals(kolegij.userList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), studentList);
+        return Objects.hash(getId(), getName(), userList);
     }
 }

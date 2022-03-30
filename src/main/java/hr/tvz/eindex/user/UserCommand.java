@@ -1,10 +1,10 @@
-package hr.tvz.eindex.student;
+package hr.tvz.eindex.user;
 
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class StudentCommand {
+public class UserCommand {
 
 
     @NotNull(message = "Must not be empty")

@@ -1,15 +1,19 @@
-delete from Student;
+delete from User;
 delete from Profesor;
 delete from Kolegij;
 delete from StudentKolegij;
 
-INSERT INTO Student(id,firstName, lastName, email, title) VALUES
+INSERT INTO User(id,firstName, lastName, email, title) VALUES
 (1,'Nikola', 'Matijevic','nmatijevi@tvz.hr', 'Student'),
 (2,'Ivan', 'Kraljic', 'ikraljic@tvz.hr' ,'Student'),
 (3,'Mario', 'Novacic', 'mnovacic@tvz.hr' ,'Student'),
 (4,'Toni', 'Pavic', 'tpavic@tvz.hr' ,'Student'),
-(5,'Ivan', 'Bagaric', 'ibagaric@tvz.hr' ,'Student');
-
+(5,'Ivan', 'Bagaric', 'ibagaric@tvz.hr' ,'Student'),
+(6,'Miroslav', 'Slamic', 'mslamic@tvz.hr', 'Profesor'),
+(7,'Tin', 'Kramberger', 'tkramberger@tvz.hr', 'Profesor'),
+(8,'Ivan', 'Cesar','icesar@tvz.hr', 'Profesor'),
+(9,'Aleksander', 'Radovan', 'aradovan@tvz.hr' ,'Profesor'),
+(10,'Davor', 'Cafuta','dcafuta@tvz.hr', 'Profesor');
 
 INSERT INTO Profesor(id,firstName, lastName, email, title) VALUES
 (1,'Miroslav', 'Slamic', 'mslamic@tvz.hr', 'prof'),

@@ -1,4 +1,4 @@
-package hr.tvz.eindex.student;
+package hr.tvz.eindex.user;
 
 
 import hr.tvz.eindex.kolegij.Kolegij;
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Student")
-public class Student implements Serializable {
+@Table(name = "User")
+public class User implements Serializable {
 
     @Id
     @Column(name="id")
@@ -39,7 +39,7 @@ public class Student implements Serializable {
 
 
 
-    public Student(long id, String firstName, String lastName, String email, String title) {
+    public User(long id, String firstName, String lastName, String email, String title) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,7 +47,7 @@ public class Student implements Serializable {
         this.title = title;
     }
 
-    public Student(){
+    public User(){
 
     }
 
@@ -94,9 +94,9 @@ public class Student implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Student)) return false;
-        Student student = (Student) o;
-        return getId() == student.getId() && getFirstName().equals(student.getFirstName()) && getLastName().equals(student.getLastName()) && getEmail().equals(student.getEmail()) && getTitle().equals(student.getTitle()) && kolegijList.equals(student.kolegijList);
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return getId() == user.getId() && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName()) && getEmail().equals(user.getEmail()) && getTitle().equals(user.getTitle()) && kolegijList.equals(user.kolegijList);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package hr.tvz.eindex.profesor;
 
-import hr.tvz.eindex.student.Student;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

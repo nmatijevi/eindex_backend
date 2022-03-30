@@ -1,4 +1,4 @@
-package hr.tvz.eindex.student;
+package hr.tvz.eindex.user;
 
 import org.springframework.stereotype.Repository;
 
@@ -6,17 +6,17 @@ import java.io.Serializable;
 import java.util.*;
 
 @Repository
-public class RepositoryClass implements StudentRepository, Serializable {
+public class RepositoryClass implements UserRepository, Serializable {
 
 
     
     @Override
-    public List<Student> findAll() {
+    public List<User> findAll() {
         return null;
     }
 
     @Override
-    public Student findUserById(long id) {
+    public User findUserById(long id) {
         return null;
     }
 
@@ -26,12 +26,12 @@ public class RepositoryClass implements StudentRepository, Serializable {
     }
 
     @Override
-    public Optional<Student> save(Student student) {
+    public Optional<User> save(User user) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Student> update(long id, Student student) {
+    public Optional<User> update(long id, User user) {
         return Optional.empty();
     }
 /*
