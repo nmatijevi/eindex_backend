@@ -1,12 +1,16 @@
 package hr.tvz.eindex.user;
 
 
+import hr.tvz.eindex.autohority.Authority;
 import hr.tvz.eindex.kolegij.Kolegij;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "User")
@@ -29,6 +33,9 @@ public class User implements Serializable {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "password")
+    private String password;
+
      @ManyToMany(targetEntity = Kolegij.class)
      @JoinTable(
              name = "StudentKolegij",
@@ -37,19 +44,27 @@ public class User implements Serializable {
      )
      private List<Kolegij> kolegijList;
 
+    @ManyToMany(targetEntity = Authority.class, mappedBy = "users")
+    private Set<Authority> authorities;
 
 
-    public User(long id, String firstName, String lastName, String email, String title) {
+    public User(long id, String firstName, String lastName, String email, String title, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.title = title;
+        this.password = password;
     }
 
     public User(){
 
     }
+
+    public User(String subject, String s, Collection<? extends GrantedAuthority> authorities) {
+    }
+
+
 
     public long getId() {
         return id;
@@ -89,6 +104,22 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 
     @Override

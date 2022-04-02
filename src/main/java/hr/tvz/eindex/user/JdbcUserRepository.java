@@ -45,6 +45,11 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     }
 
     @Override
+    public Optional<User> findUserByEmail(String email) {
+        return Optional.ofNullable(jdbc.queryForObject("Select * from User where email = ?", this::mapRowToUser, email));
+    }
+
+    @Override
     public Optional<User> save(final User user) {
         user.setId(saveStudentDetails(user));
         return Optional.of(user);

@@ -1,16 +1,20 @@
 package hr.tvz.eindex.user;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Optional;
 
-
-interface UserRepository {
+@Repository
+public interface UserRepository {
 
     List<User> findAll();
 
     User findUserById(long id);
 
     boolean deleteById(Long id);
+
+    Optional<User> findUserByEmail(String email);
 
     Optional<User> save(User user);
 

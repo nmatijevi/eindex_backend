@@ -11,7 +11,7 @@ public interface UserService {
     List<UserDTO> findAll();
 
     User findStudentById(long id);
-
+    Optional<UserDTO> findUserByEmail(String email);
     boolean deleteById(Long firstName);
 
     Optional<UserDTO> save(UserCommand command);

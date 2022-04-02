@@ -30,11 +30,16 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepositoryJdbc.findStudentById(id);
     }
 
+    @Override
+    public Optional<UserDTO> findUserByEmail(String email) {
+        return userRepositoryJdbc.findUserByEmail(email).map(this::mapUserToDTO);
+    }
+
     private UserDTO mapUserToDTO(final User user){
         return new UserDTO(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getTitle());
     }
     private User mapCommandToUser(final UserCommand command){
-        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle());
+        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle(), command.getPassword());
     }
     private UserDTO mapCommandToUserDTO(final UserCommand command){
         return new UserDTO(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle());

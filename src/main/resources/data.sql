@@ -3,17 +3,17 @@ delete from Profesor;
 delete from Kolegij;
 delete from StudentKolegij;
 
-INSERT INTO User(id,firstName, lastName, email, title) VALUES
-(1,'Nikola', 'Matijevic','nmatijevi@tvz.hr', 'Student'),
-(2,'Ivan', 'Kraljic', 'ikraljic@tvz.hr' ,'Student'),
-(3,'Mario', 'Novacic', 'mnovacic@tvz.hr' ,'Student'),
-(4,'Toni', 'Pavic', 'tpavic@tvz.hr' ,'Student'),
-(5,'Ivan', 'Bagaric', 'ibagaric@tvz.hr' ,'Student'),
-(6,'Miroslav', 'Slamic', 'mslamic@tvz.hr', 'Profesor'),
-(7,'Tin', 'Kramberger', 'tkramberger@tvz.hr', 'Profesor'),
-(8,'Ivan', 'Cesar','icesar@tvz.hr', 'Profesor'),
-(9,'Aleksander', 'Radovan', 'aradovan@tvz.hr' ,'Profesor'),
-(10,'Davor', 'Cafuta','dcafuta@tvz.hr', 'Profesor');
+INSERT INTO User(id,firstName, lastName, email, title, password) VALUES
+(1,'Nikola', 'Matijevic','nmatijevi@tvz.hr', 'Student', 'a'),
+(2,'Ivan', 'Kraljic', 'ikraljic@tvz.hr' ,'Student', 'a'),
+(3,'Mario', 'Novacic', 'mnovacic@tvz.hr' ,'Student', 'a'),
+(4,'Toni', 'Pavic', 'tpavic@tvz.hr' ,'Student', 'a'),
+(5,'Ivan', 'Bagaric', 'ibagaric@tvz.hr' ,'Student', 'a'),
+(6,'Miroslav', 'Slamic', 'mslamic@tvz.hr', 'Profesor', 'a'),
+(7,'Tin', 'Kramberger', 'tkramberger@tvz.hr', 'Profesor', 'a'),
+(8,'Ivan', 'Cesar','icesar@tvz.hr', 'Profesor', 'a'),
+(9,'Aleksander', 'Radovan', 'aradovan@tvz.hr' ,'Profesor', 'a'),
+(10,'Davor', 'Cafuta','dcafuta@tvz.hr', 'Profesor', 'a');
 
 INSERT INTO Profesor(id,firstName, lastName, email, title) VALUES
 (1,'Miroslav', 'Slamic', 'mslamic@tvz.hr', 'prof'),
@@ -37,3 +37,13 @@ INSERT INTO StudentKolegij(student_id, kolegij_id) VALUES
 (3,3),
 (4,4),
 (5,5);
+
+INSERT INTO authority(id, name)VALUES
+(1, 'ROLE_ADMIN'),
+(2, 'ROLE_USER'),
+(3, 'DELETER');
+
+INSERT INTO user_authority(user_id, authority_id)VALUES
+(1,1),
+(2,2),
+(3,3);

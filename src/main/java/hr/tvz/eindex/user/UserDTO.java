@@ -1,5 +1,7 @@
 package hr.tvz.eindex.user;
 
+import java.util.Set;
+
 public class UserDTO {
 
     private long id;
@@ -9,12 +11,15 @@ public class UserDTO {
     private String email;
     private String title;
 
-    public UserDTO(long id, String firstName, String lastName, String email , String title) {
+    private Set<String> authorities;
+
+    public UserDTO(long id, String firstName, String lastName, String email , String title/*, Set<String> authorities*/) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.title = title;
+        //this.authorities = authorities;
     }
 
     public long getId() {
@@ -55,5 +60,13 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<String> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<String> authorities) {
+        this.authorities = authorities;
     }
 }

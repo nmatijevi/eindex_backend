@@ -12,7 +12,7 @@ public interface UserRepositoryJdbc {
     List<User> findAll();
 
     User findStudentById(long id);
-
+    Optional<User> findUserByEmail(String email);
     boolean deleteById(Long id);
 
     Optional<User> save(User user);

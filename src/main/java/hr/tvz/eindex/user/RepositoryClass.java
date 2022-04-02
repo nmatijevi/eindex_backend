@@ -26,6 +26,11 @@ public class RepositoryClass implements UserRepository, Serializable {
     }
 
     @Override
+    public Optional<User> findUserByEmail(String email) {
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<User> save(User user) {
         return Optional.empty();
     }

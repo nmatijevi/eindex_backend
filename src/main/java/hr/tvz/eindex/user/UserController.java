@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.security.SecurityUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,5 +68,17 @@ public class UserController {
                 .orElseGet(
                         () -> ResponseEntity.notFound().build()
                 );
+    }
+
+    @GetMapping("/current-user")
+    public ResponseEntity<UserDTO> getCurrentUser(){
+        return SecurityUtils.getCurrentUserUsername().map(
+                username -> userService.findUserByEmail(username).map
+                        (ResponseEntity::ok).orElseGet(
+                        () -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build()
+                )
+        ).orElseGet(
+                () -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build()
+        );
     }
 }
