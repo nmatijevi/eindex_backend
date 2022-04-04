@@ -72,8 +72,8 @@ public class UserController {
 
     @GetMapping("/current-user")
     public ResponseEntity<UserDTO> getCurrentUser(){
-        return SecurityUtils.getCurrentUserUsername().map(
-                username -> userService.findUserByEmail(username).map
+        return SecurityUtils.getCurrentUserEmail().map(
+                email -> userService.findUserByEmail(email).map
                         (ResponseEntity::ok).orElseGet(
                         () -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build()
                 )
