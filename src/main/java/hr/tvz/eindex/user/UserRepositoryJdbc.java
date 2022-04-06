@@ -12,8 +12,9 @@ public interface UserRepositoryJdbc {
     List<User> findAll();
 
     User findStudentById(long id);
-    Optional<User> findUserByEmail(String email);
+    //Optional<User> findUserByUsername(String username);
     boolean deleteById(Long id);
+    Optional<User> findOneByUsername(String username);
 
     Optional<User> save(User user);
     Optional<User> update(long id, User user);

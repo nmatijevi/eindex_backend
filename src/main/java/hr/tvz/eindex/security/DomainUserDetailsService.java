@@ -2,6 +2,7 @@ package hr.tvz.eindex.security;
 
 
 import hr.tvz.eindex.user.User;
+import hr.tvz.eindex.user.UserRepoJpa;
 import hr.tvz.eindex.user.UserRepository;
 import hr.tvz.eindex.user.UserRepositoryJdbc;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,20 +19,20 @@ import java.util.stream.Collectors;
 @Component("userDetailsService")
 public class DomainUserDetailsService implements UserDetailsService {
 
-    private final UserRepositoryJdbc userRepositoryJdbc;
+    private final UserRepoJpa userRepoJpa;
 
-    public DomainUserDetailsService(UserRepositoryJdbc userRepositoryJdbc) {
-        this.userRepositoryJdbc = userRepositoryJdbc;
+    public DomainUserDetailsService(UserRepoJpa userRepoJpa) {
+        this.userRepoJpa = userRepoJpa;
     }
 
     @Override
     @Transactional
-    public UserDetails loadUserByUsername(final String email) {
+    public UserDetails loadUserByUsername(final String username) {
 
-        return userRepositoryJdbc
-                .findUserByEmail(email)
+        return userRepoJpa
+                .findOneByUsername(username)
                 .map(this::createSpringSecurityUser)
-                .orElseThrow(() -> new UsernameNotFoundException("User with this " + email + " was not found in the database"));
+                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " was not found in the database"));
     }
 
     private org.springframework.security.core.userdetails.User createSpringSecurityUser(User user) {
@@ -40,7 +41,7 @@ public class DomainUserDetailsService implements UserDetailsService {
                 .stream()
                 .map(authority -> new SimpleGrantedAuthority(authority.getName()))
                 .collect(Collectors.toList());
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }
 

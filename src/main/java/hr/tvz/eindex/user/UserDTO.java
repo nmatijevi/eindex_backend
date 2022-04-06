@@ -8,18 +8,21 @@ public class UserDTO {
 
     private String firstName;
     private String lastName;
+    private String username;
     private String email;
     private String title;
-
+    private String password;
     private Set<String> authorities;
 
-    public UserDTO(long id, String firstName, String lastName, String email , String title/*, Set<String> authorities*/) {
+    public UserDTO(long id, String firstName, String lastName, String username,String email , String title, String password, Set<String> authorities) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.title = title;
-        //this.authorities = authorities;
+        this.password = password;
+        this.authorities = authorities;
     }
 
     public long getId() {
@@ -64,6 +67,22 @@ public class UserDTO {
 
     public Set<String> getAuthorities() {
         return authorities;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setAuthorities(Set<String> authorities) {

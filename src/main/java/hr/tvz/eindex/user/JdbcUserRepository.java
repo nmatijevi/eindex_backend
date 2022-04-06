@@ -37,6 +37,10 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
             return jdbc.queryForObject("Select * from User where id = ?", this::mapRowToUser, id);
         }
 
+    @Override
+    public Optional<User> findOneByUsername(String username) {
+        return Optional.ofNullable(jdbc.queryForObject("Select * from User where username = ?", this::mapRowToUser, username));
+    }
 
     @Override
     public boolean deleteById(Long id) {
@@ -44,10 +48,11 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         return  jdbc.update("DELETE FROM User where id = ?",args) == 1;
     }
 
-    @Override
-    public Optional<User> findUserByEmail(String email) {
-        return Optional.ofNullable(jdbc.queryForObject("Select * from User where email = ?", this::mapRowToUser, email));
-    }
+
+  //  @Override
+    //public Optional<User> findUserByUsername(String username) {
+  //      return Optional.ofNullable(jdbc.queryForObject("Select * from User where username = ?", this::mapRowToUser, username));
+  //  }
 
     @Override
     public Optional<User> save(final User user) {
@@ -69,8 +74,10 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         user.setId(rs.getLong("id"));
         user.setFirstName(rs.getString("firstName"));
         user.setLastName(rs.getString("lastName"));
+        user.setUsername("username");
         user.setEmail(rs.getString("email"));
         user.setTitle(rs.getString("title"));
+        user.setPassword(rs.getString("password"));
         return user;
     }
 

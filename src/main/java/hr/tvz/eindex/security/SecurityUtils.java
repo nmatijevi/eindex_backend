@@ -15,7 +15,7 @@ public final class SecurityUtils {
     private SecurityUtils() {
     }
 
-    public static Optional<String> getCurrentUserEmail() {
+    public static Optional<String> getCurrentUserUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return Optional.ofNullable(extractPrincipal(securityContext.getAuthentication()));
     }

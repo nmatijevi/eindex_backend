@@ -13,6 +13,7 @@ public interface UserRepository {
     User findUserById(long id);
 
     boolean deleteById(Long id);
+    Optional<UserDTO> findOneByUsername(String username);
 
     Optional<User> findUserByEmail(String email);
 

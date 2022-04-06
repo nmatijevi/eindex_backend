@@ -1,6 +1,8 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.security.DomainUserDetailsService;
 import hr.tvz.eindex.security.SecurityUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,13 +11,17 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping(value ="api/user", produces = "application/json")
+@CrossOrigin(origins = "http://localhost:4200/%22")
 public class UserController {
 
+    private final DomainUserDetailsService domainUserDetailsService;
+    private final ModelMapper modelMapper;
     private final UserService userService;
 
-    public UserController(UserService userService){
+    public UserController(DomainUserDetailsService domainUserDetailsService, UserService userService) {
+        this.domainUserDetailsService = domainUserDetailsService;
+        this.modelMapper = new ModelMapper();
         this.userService = userService;
     }
 
@@ -37,12 +43,12 @@ public class UserController {
 
     @GetMapping("/allStudents")
     public List<UserDTO> getStudentByTitle(){
-        return userService.findStudentByTitle();
+        return userService.findAllByTitle("Student");
     }
 
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){
-        return userService.findProfesorByTitle();
+        return userService.findAllByTitle("Profesor");
     }
 
     @PostMapping("/add")
@@ -72,8 +78,8 @@ public class UserController {
 
     @GetMapping("/current-user")
     public ResponseEntity<UserDTO> getCurrentUser(){
-        return SecurityUtils.getCurrentUserEmail().map(
-                email -> userService.findUserByEmail(email).map
+        return SecurityUtils.getCurrentUserUsername().map(
+                username -> userService.findOneByUsername(username).map
                         (ResponseEntity::ok).orElseGet(
                         () -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build()
                 )

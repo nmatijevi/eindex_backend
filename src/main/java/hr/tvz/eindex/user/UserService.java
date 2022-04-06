@@ -11,14 +11,15 @@ public interface UserService {
     List<UserDTO> findAll();
 
     User findStudentById(long id);
-    Optional<UserDTO> findUserByEmail(String email);
+    //Optional<UserDTO> findUserByUsername(String username);
     boolean deleteById(Long firstName);
+    Optional<UserDTO> findOneByUsername(String username);
 
     Optional<UserDTO> save(UserCommand command);
 
     Optional<UserDTO> update(long id, UserCommand command);
 
-    List<UserDTO> findProfesorByTitle();
+    List<UserDTO> findAllByTitle(String title);
 
-    List<UserDTO> findStudentByTitle();
+   // List<UserDTO> findStudentByTitle();
 }

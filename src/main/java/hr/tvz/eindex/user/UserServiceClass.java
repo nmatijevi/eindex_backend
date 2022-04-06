@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.autohority.Authority;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -11,9 +12,10 @@ import java.util.stream.Collectors;
 public class UserServiceClass implements UserService, Serializable {
 
     private final UserRepositoryJdbc userRepositoryJdbc;
-
-    public UserServiceClass(UserRepositoryJdbc userRepositoryJdbc){
+    private final UserRepoJpa userRepoJpa;
+    public UserServiceClass(UserRepositoryJdbc userRepositoryJdbc, UserRepoJpa userRepoJpa){
         this.userRepositoryJdbc = userRepositoryJdbc;
+        this.userRepoJpa = userRepoJpa;
     }
 
     @Override
@@ -30,19 +32,28 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepositoryJdbc.findStudentById(id);
     }
 
-    @Override
-    public Optional<UserDTO> findUserByEmail(String email) {
-        return userRepositoryJdbc.findUserByEmail(email).map(this::mapUserToDTO);
-    }
+
+
+    // @Override
+   // public Optional<UserDTO> findUserByUsername(String email) {
+   //     return userRepositoryJdbc.findUserByUsername(email).map(this::mapUserToDTO);
+   // }
 
     private UserDTO mapUserToDTO(final User user){
-        return new UserDTO(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getTitle());
+        return new UserDTO(user.getId(), user.getFirstName() ,user.getLastName(), user.getEmail(), user.getEmail(), user.getTitle(), user.getPassword(),
+                user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()));
     }
     private User mapCommandToUser(final UserCommand command){
-        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle(), command.getPassword());
+        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail() ,command.getEmail(),command.getTitle(), command.getPassword());
     }
+    /*
     private UserDTO mapCommandToUserDTO(final UserCommand command){
-        return new UserDTO(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(),command.getTitle());
+        return new UserDTO(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail(), command.getEmail(),command.getTitle(), command.getPassword());
+    }*/
+
+    @Override
+    public Optional<UserDTO> findOneByUsername(String username) {
+        return userRepoJpa.findOneByUsername(username).map(this::mapUserToDTO);
     }
 
     @Override
@@ -61,13 +72,15 @@ public class UserServiceClass implements UserService, Serializable {
     }
 
     @Override
-    public List<UserDTO> findProfesorByTitle() {
-        return userRepositoryJdbc.findProfesorByTitle().stream().map(this::mapUserToDTO).collect(Collectors.toList());
+    public List<UserDTO> findAllByTitle(String title) {
+        return userRepoJpa.findAllByTitle(title).stream().map(this::mapUserToDTO).collect(Collectors.toList());
     }
 
-    @Override
-    public List<UserDTO> findStudentByTitle() {
-        return userRepositoryJdbc.findStudentByTitle().stream().map(this::mapUserToDTO).collect(Collectors.toList());
+   /* @Override
+    public List<UserDTO> findAllByTitle() {
+        return userRepoJpa.findAllByTitle("Student").stream().map(this::mapUserToDTO).collect(Collectors.toList());
     }
+
+    */
 
 }

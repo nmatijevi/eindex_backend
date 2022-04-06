@@ -17,6 +17,9 @@ public class UserCommand {
     private String lastName;
 
     @NotBlank(message = "Must not be empty")
+    private String username;
+
+    @NotBlank(message = "Must not be empty")
     private String email;
 
     @NotBlank(message = "Must not be empty")
@@ -71,5 +74,13 @@ public class UserCommand {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

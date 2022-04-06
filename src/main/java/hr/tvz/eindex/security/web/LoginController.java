@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.sql.SQLOutput;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api")
@@ -73,6 +75,8 @@ public class LoginController {
         @NotNull
         private String password;
 
+
+
         public String getUsername() {
             return username;
         }
@@ -88,5 +92,7 @@ public class LoginController {
         public void setPassword(String password) {
             this.password = password;
         }
+
+
     }
 }

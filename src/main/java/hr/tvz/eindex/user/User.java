@@ -17,24 +17,23 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @Column(name="id")
     @GeneratedValue
     private long id;
 
-    @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "email")
+    private String username;
+
     private String email;
 
-    @Column(name = "title")
     private String title;
 
-    @Column(name = "password")
     private String password;
+
+    @ManyToMany(targetEntity = Authority.class, mappedBy = "users")
+    private Set<Authority> authorities;
 
      @ManyToMany(targetEntity = Kolegij.class)
      @JoinTable(
@@ -44,14 +43,14 @@ public class User implements Serializable {
      )
      private List<Kolegij> kolegijList;
 
-    @ManyToMany(targetEntity = Authority.class, mappedBy = "users")
-    private Set<Authority> authorities;
 
 
-    public User(long id, String firstName, String lastName, String email, String title, String password) {
+
+    public User(long id, String firstName, String lastName, String username, String email, String title, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.title = title;
         this.password = password;
@@ -60,10 +59,6 @@ public class User implements Serializable {
     public User(){
 
     }
-
-    public User(String subject, String s, Collection<? extends GrantedAuthority> authorities) {
-    }
-
 
 
     public long getId() {
@@ -122,16 +117,25 @@ public class User implements Serializable {
         this.authorities = authorities;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getId() == user.getId() && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName()) && getEmail().equals(user.getEmail()) && getTitle().equals(user.getTitle()) && kolegijList.equals(user.kolegijList);
+        return getId() == user.getId() && getFirstName().equals(user.getFirstName()) && getLastName().equals(user.getLastName()) && getUsername().equals(user.getUsername()) && getEmail().equals(user.getEmail()) && getTitle().equals(user.getTitle()) && getPassword().equals(user.getPassword()) && kolegijList.equals(user.kolegijList) && getAuthorities().equals(user.getAuthorities());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getTitle(), kolegijList);
+        return Objects.hash(getId(), getFirstName(), getLastName(), getUsername(), getEmail(), getTitle(), getPassword(), kolegijList, getAuthorities());
     }
 }

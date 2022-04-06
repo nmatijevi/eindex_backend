@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
-
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 

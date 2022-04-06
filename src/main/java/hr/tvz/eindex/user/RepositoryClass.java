@@ -8,8 +8,11 @@ import java.util.*;
 @Repository
 public class RepositoryClass implements UserRepository, Serializable {
 
+    @Override
+    public Optional<UserDTO> findOneByUsername(String username) {
+        return Optional.empty();
+    }
 
-    
     @Override
     public List<User> findAll() {
         return null;
