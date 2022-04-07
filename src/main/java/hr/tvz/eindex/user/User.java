@@ -38,8 +38,8 @@ public class User implements Serializable {
      @ManyToMany(targetEntity = Kolegij.class)
      @JoinTable(
              name = "StudentKolegij",
-             joinColumns = { @JoinColumn(name = "studentId") },
-             inverseJoinColumns = { @JoinColumn(name = "kolegijId") }
+             joinColumns = { @JoinColumn(name = "studentid") },
+             inverseJoinColumns = { @JoinColumn(name = "kolegijid") }
      )
      private List<Kolegij> kolegijList;
 

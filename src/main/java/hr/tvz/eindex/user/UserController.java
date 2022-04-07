@@ -46,7 +46,7 @@ public class UserController {
         return userService.findAllByTitle("Student");
     }
 
-    @GetMapping("/allStudentsByKolegijId")
+    @GetMapping("/kolegij/{id}")
     public List<UserDTO> getStudentsByKolegijId(@PathVariable Long id){
         return userService.getStudentsByKolegijId(id);
     }

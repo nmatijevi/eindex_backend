@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("kolegij")
+@RequestMapping("kolegiji")
 @CrossOrigin(origins = "http://localhost:4200")
 public class KolegijController {
 

@@ -31,7 +31,7 @@ INSERT INTO Kolegij(id,name) VALUES
 (4,'Objektno orijentirano programiranej'),
 (5,'Programiranje u Javi');
 
-INSERT INTO StudentKolegij(id, student_id, kolegij_id) VALUES
+INSERT INTO StudentKolegij(id, studentid, kolegijid) VALUES
 (1,1,1),
 (2,1,2),
 (3,2,1),

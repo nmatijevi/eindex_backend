@@ -23,11 +23,11 @@ create table if not exists  Kolegij(
 
 create table if not exists  StudentKolegij(
     id int(10) not null,
-    student_id int(10) not null,
-    kolegij_id int(10) not null,
-    PRIMARY KEY (student_id, kolegij_id),
-    foreign key (student_id) REFERENCES User (id),
-    foreign key (kolegij_id) REFERENCES Kolegij (id)
+    studentid int(10) not null,
+    kolegijid int(10) not null,
+    PRIMARY KEY (studentid, kolegijid),
+    foreign key (studentid) REFERENCES User (id),
+    foreign key (kolegijid) REFERENCES Kolegij (id)
 );
 
 create table if not exists authority(
