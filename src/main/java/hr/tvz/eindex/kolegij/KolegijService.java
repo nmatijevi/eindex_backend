@@ -14,6 +14,7 @@ public interface KolegijService {
 
     List<KolegijDTO> findAll();
 
+
     List<Kolegij> findKolegijById(Long id);
 
     boolean deleteById(Long id);

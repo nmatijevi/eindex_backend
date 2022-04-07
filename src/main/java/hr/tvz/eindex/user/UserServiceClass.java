@@ -76,7 +76,13 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepoJpa.findAllByTitle(title).stream().map(this::mapUserToDTO).collect(Collectors.toList());
     }
 
-   /* @Override
+    @Override
+    public List<UserDTO> getStudentsByKolegijId(long id) {
+        return userRepoJpa.findAllByKolegijList_id(id).stream().map(this::mapUserToDTO).collect(Collectors.toList());
+    }
+
+
+/* @Override
     public List<UserDTO> findAllByTitle() {
         return userRepoJpa.findAllByTitle("Student").stream().map(this::mapUserToDTO).collect(Collectors.toList());
     }

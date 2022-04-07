@@ -103,6 +103,9 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
        }
     }
 
+
+
+
     @Override
     public List<User> findStudentByTitle() {
         return jdbc.query("SELECT * from USER where title ='Student'", this::mapRowToUser);

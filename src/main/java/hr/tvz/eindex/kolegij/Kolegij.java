@@ -49,6 +49,13 @@ public class Kolegij {
         this.name = name;
     }
 
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
 
     @Override
     public boolean equals(Object o) {

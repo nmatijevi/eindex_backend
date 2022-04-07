@@ -21,5 +21,7 @@ public interface UserService {
 
     List<UserDTO> findAllByTitle(String title);
 
+    List<UserDTO> getStudentsByKolegijId(long id);
+
    // List<UserDTO> findStudentByTitle();
 }

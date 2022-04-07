@@ -46,6 +46,11 @@ public class UserController {
         return userService.findAllByTitle("Student");
     }
 
+    @GetMapping("/allStudentsByKolegijId")
+    public List<UserDTO> getStudentsByKolegijId(@PathVariable Long id){
+        return userService.getStudentsByKolegijId(id);
+    }
+
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){
         return userService.findAllByTitle("Profesor");

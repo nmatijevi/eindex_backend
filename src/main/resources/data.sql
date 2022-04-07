@@ -31,14 +31,14 @@ INSERT INTO Kolegij(id,name) VALUES
 (4,'Objektno orijentirano programiranej'),
 (5,'Programiranje u Javi');
 
-INSERT INTO StudentKolegij(student_id, kolegij_id) VALUES
-(1,1),
-(1,2),
-(2,1),
-(2,2),
-(3,3),
-(4,4),
-(5,5);
+INSERT INTO StudentKolegij(id, student_id, kolegij_id) VALUES
+(1,1,1),
+(2,1,2),
+(3,2,1),
+(4,2,2),
+(5,3,3),
+(6,4,4),
+(7,5,5);
 
 INSERT INTO authority(id, name)VALUES
 (1, 'ROLE_ADMIN'),

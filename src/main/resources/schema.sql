@@ -22,6 +22,7 @@ create table if not exists  Kolegij(
 );
 
 create table if not exists  StudentKolegij(
+    id int(10) not null,
     student_id int(10) not null,
     kolegij_id int(10) not null,
     PRIMARY KEY (student_id, kolegij_id),

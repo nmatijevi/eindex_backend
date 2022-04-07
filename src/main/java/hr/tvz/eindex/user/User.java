@@ -125,6 +125,13 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public List<Kolegij> getKolegijList() {
+        return kolegijList;
+    }
+
+    public void setKolegijList(List<Kolegij> kolegijList) {
+        this.kolegijList = kolegijList;
+    }
 
     @Override
     public boolean equals(Object o) {
