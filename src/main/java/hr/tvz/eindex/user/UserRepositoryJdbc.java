@@ -15,7 +15,7 @@ public interface UserRepositoryJdbc {
     //Optional<User> findUserByUsername(String username);
     boolean deleteById(Long id);
     Optional<User> findOneByUsername(String username);
-
+    Optional<User> addStudentToKolegij(long studentId, long kolegijId);
     Optional<User> save(User user);
     Optional<User> update(long id, User user);
 

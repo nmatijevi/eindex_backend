@@ -36,6 +36,9 @@ public class KolegijController {
         kolegijService.deleteById(id);
     }
 
+
+
+
     @PostMapping
     public ResponseEntity<KolegijDTO> save(@Valid @RequestBody final KolegijCommand command){
         return kolegijService.save(command)

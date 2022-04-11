@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.kolegij.KolegijDTO;
 import hr.tvz.eindex.security.DomainUserDetailsService;
 import hr.tvz.eindex.security.SecurityUtils;
 import org.modelmapper.ModelMapper;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value ="api/user", produces = "application/json")
@@ -55,6 +57,13 @@ public class UserController {
     public List<UserDTO> getProfesorByTitle(){
         return userService.findAllByTitle("Profesor");
     }
+
+    @PostMapping("/addStudent/{studentId}/{kolegijId}")
+    public void add(@PathVariable String studentId, @PathVariable String kolegijId){
+        userService.addStudentToKolegij(Integer.parseInt(kolegijId), Integer.parseInt(studentId));
+
+    }
+
 
     @PostMapping("/add")
     public ResponseEntity<UserDTO> save(@Valid @RequestBody final UserCommand command){

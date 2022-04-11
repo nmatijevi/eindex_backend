@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -17,13 +18,23 @@ import java.util.Optional;
 public class JdbcUserRepository implements UserRepositoryJdbc {
 
     private JdbcTemplate jdbc;
-    private SimpleJdbcInsert studentInserter;
+    private JdbcTemplate jdbcUserCategory;
 
-    public JdbcUserRepository(JdbcTemplate jdbc){
+    private SimpleJdbcInsert studentInserter;
+    private SimpleJdbcInsert studentKolegijInserter;
+
+
+    public JdbcUserRepository(JdbcTemplate jdbc, JdbcTemplate jdbcUserCategory){
 
         this.jdbc = jdbc;
+        this.jdbcUserCategory = jdbcUserCategory;
+
         this.studentInserter = new SimpleJdbcInsert(jdbc)
                 .withTableName("User")
+                .usingGeneratedKeyColumns("id");
+
+        this.studentKolegijInserter = new SimpleJdbcInsert(jdbcUserCategory)
+                .withTableName("StudentKolegij")
                 .usingGeneratedKeyColumns("id");
     }
 
@@ -43,11 +54,16 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     }
 
     @Override
+    public Optional addStudentToKolegij(long studentId, long kolegijId) {
+        return Optional.ofNullable(jdbcUserCategory.update("Insert into StudentKolegij (studentid, kolegijid) VALUES (?, ?)", studentId, kolegijId));
+
+    }
+
+    @Override
     public boolean deleteById(Long id) {
         Object[] args = new Object[] {id};
         return  jdbc.update("DELETE FROM User where id = ?",args) == 1;
     }
-
 
   //  @Override
     //public Optional<User> findUserByUsername(String username) {
@@ -80,6 +96,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         user.setPassword(rs.getString("password"));
         return user;
     }
+
 
     @Override
     public Optional<User> update(long id, User user) {
