@@ -128,7 +128,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         user.setId(rs.getLong("id"));
         user.setFirstName(rs.getString("firstName"));
         user.setLastName(rs.getString("lastName"));
-        user.setUsername("username");
+        user.setUsername(rs.getString("username"));
         user.setEmail(rs.getString("email"));
         user.setTitle(rs.getString("title"));
         user.setPassword(rs.getString("password"));
