@@ -40,7 +40,7 @@ INSERT INTO StudentKolegij(id, studentid, kolegijid) VALUES
 (6,4,4),
 (7,5,5);
 
-INSERT INTO authority(id, name)VALUES
+INSERT INTO authority(id, name) VALUES
 (1, 'ROLE_ADMIN'),
 (2, 'ROLE_USER'),
 (3, 'DELETER');
@@ -48,4 +48,11 @@ INSERT INTO authority(id, name)VALUES
 INSERT INTO user_authority(user_id, authority_id)VALUES
 (1,1),
 (2,2),
-(3,3);
+(3,3),
+(4,2),
+(5,2),
+(6,2),
+(7,2),
+(8,2),
+(9,2),
+(10,2);

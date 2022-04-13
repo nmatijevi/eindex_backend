@@ -1,33 +1,42 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.autohority.Authority;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Primary
 @Repository
 public class JdbcUserRepository implements UserRepositoryJdbc {
 
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+
+
     private JdbcTemplate jdbc;
     private JdbcTemplate jdbcUserCategory;
+    private JdbcTemplate jdbcUserAuthority;
+
 
     private SimpleJdbcInsert studentInserter;
     private SimpleJdbcInsert studentKolegijInserter;
+    private SimpleJdbcInsert studentAuthInserter;
 
 
-    public JdbcUserRepository(JdbcTemplate jdbc, JdbcTemplate jdbcUserCategory){
+
+    public JdbcUserRepository(JdbcTemplate jdbc, JdbcTemplate jdbcUserCategory, JdbcTemplate jdbcUserAuthority){
 
         this.jdbc = jdbc;
         this.jdbcUserCategory = jdbcUserCategory;
+        this.jdbcUserAuthority = jdbcUserAuthority;
 
         this.studentInserter = new SimpleJdbcInsert(jdbc)
                 .withTableName("User")
@@ -36,6 +45,12 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         this.studentKolegijInserter = new SimpleJdbcInsert(jdbcUserCategory)
                 .withTableName("StudentKolegij")
                 .usingGeneratedKeyColumns("id");
+
+        this.studentAuthInserter = new SimpleJdbcInsert(jdbcUserAuthority)
+                .withTableName("user_authority")
+                .usingGeneratedKeyColumns("id");
+
+
     }
 
     @Override
@@ -70,17 +85,40 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
   //      return Optional.ofNullable(jdbc.queryForObject("Select * from User where username = ?", this::mapRowToUser, username));
   //  }
 
+
+    @Override
+    public Optional<Authority> findUserAuthority(long id) {
+        return Optional.ofNullable(jdbcUserAuthority.queryForObject("SELECT * FROM user_authority where user_id=?",this::mapRowToAuthority, id));
+    }
+
+    private Authority mapRowToAuthority(ResultSet rs, int rowNum) throws SQLException{
+        Authority authority = new Authority();
+        authority.setId(rs.getLong("id"));
+        authority.setName(rs.getString("name"));
+
+        return authority;
+    }
+
     @Override
     public Optional<User> save(final User user) {
         user.setId(saveStudentDetails(user));
+        Set<Authority> authorities = new HashSet<Authority>();
+        Authority a = new Authority(2, "ROLE_USER");
+        authorities.add(a);
+        user.setAuthorities(authorities);
+        jdbcUserAuthority.update("Insert into user_authority (user_id, authority_id) VALUES (?, ?)", user.getId(), "2");
         return Optional.of(user);
     }
     private long saveStudentDetails(User user){
         Map<String, Object> values = new HashMap<>();
         values.put("firstName", user.getFirstName());
         values.put("lastName", user.getLastName());
+        values.put("username", user.getUsername());
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
+        values.put("password", passwordEncoder.encode(user.getPassword()));
         values.put("email", user.getEmail());
         values.put("title", user.getTitle());
+        values.put("authorities", user.getAuthorities());
         return studentInserter.executeAndReturnKey(values).longValue();
     }
 
@@ -103,14 +141,16 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         int executed = jdbc.update("UPDATE user set " +
                 "firstName = ?, " +
                 "lastName = ?," +
+                "username = ?," +
                 "email = ?," +
                 "title = ?" +
                 "WHERE id = ?",
                 user.getFirstName(),
                 user.getLastName(),
+                user.getUsername(),
                 user.getEmail(),
                 user.getTitle(),
-                user.getId()
+                id
                 );
 
        if(executed > 0){
@@ -119,7 +159,6 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
            return Optional.empty();
        }
     }
-
 
 
 

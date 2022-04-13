@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.autohority.Authority;
 import hr.tvz.eindex.kolegij.KolegijDTO;
 import hr.tvz.eindex.security.DomainUserDetailsService;
 import hr.tvz.eindex.security.SecurityUtils;
@@ -9,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping(value ="api/user", produces = "application/json")
@@ -32,7 +35,7 @@ public class UserController {
         return userService.findAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("/edit/{id}")
     public User getUserById(@PathVariable final long id){
         return userService.findStudentById(id);
     }
@@ -67,6 +70,10 @@ public class UserController {
 
     @PostMapping("/add")
     public ResponseEntity<UserDTO> save(@Valid @RequestBody final UserCommand command){
+        Set<Authority> authorities = new HashSet<Authority>();
+        Authority a = new Authority(2, "ROLE_USER");
+        authorities.add(a);
+        command.setAuthority(authorities);
         return userService.save(command)
                 .map(
                         userDTO -> ResponseEntity
@@ -80,9 +87,12 @@ public class UserController {
                 );
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable long id, @Valid @RequestBody
-    final UserCommand command){
+    @PutMapping("/update/{id}")
+    public ResponseEntity<UserDTO> update(@PathVariable long id, @Valid @RequestBody final UserCommand command){
+        Set<Authority> authorities = new HashSet<Authority>();
+        Authority a = new Authority(2, "ROLE_USER");
+        authorities.add(a);
+        command.setAuthority(authorities);
         return userService.update(id, command)
                 .map(ResponseEntity::ok)
                 .orElseGet(

@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.autohority.Authority;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,13 @@ public interface UserService {
     //Optional<UserDTO> findUserByUsername(String username);
     boolean deleteById(Long firstName);
     Optional<UserDTO> findOneByUsername(String username);
+    User findOneById(long id);
 
     Optional<UserDTO> save(UserCommand command);
 
     Optional<UserDTO> update(long id, UserCommand command);
+
+    Optional<Authority> findUserAuthority(long id);
 
     List<UserDTO> findAllByTitle(String title);
 

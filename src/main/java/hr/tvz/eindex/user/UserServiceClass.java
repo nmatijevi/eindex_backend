@@ -32,7 +32,10 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepositoryJdbc.findStudentById(id);
     }
 
-
+    @Override
+    public User findOneById(long id) {
+        return userRepoJpa.findOneById(id);
+    }
 
     // @Override
    // public Optional<UserDTO> findUserByUsername(String email) {
@@ -40,11 +43,14 @@ public class UserServiceClass implements UserService, Serializable {
    // }
 
     private UserDTO mapUserToDTO(final User user){
-        return new UserDTO(user.getId(), user.getFirstName() ,user.getLastName(), user.getEmail(), user.getEmail(), user.getTitle(), user.getPassword(),
+        return new UserDTO(user.getId(), user.getFirstName() ,user.getLastName(), user.getUsername(), user.getEmail(), user.getTitle(), user.getPassword(),
                 user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()));
     }
+
+
     private User mapCommandToUser(final UserCommand command){
-        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getEmail() ,command.getEmail(),command.getTitle(), command.getPassword());
+        return new User(command.getId(), command.getFirstName(), command.getLastName(), command.getUsername(),
+                command.getEmail(),command.getTitle(), command.getPassword(), command.getAuthority());
     }
     /*
     private UserDTO mapCommandToUserDTO(final UserCommand command){
@@ -86,6 +92,10 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepositoryJdbc.addStudentToKolegij(studentId, kolegijId);
     }
 
+    @Override
+    public Optional<Authority> findUserAuthority(long id) {
+        return userRepositoryJdbc.findUserAuthority(id);
+    }
 
 /* @Override
     public List<UserDTO> findAllByTitle() {

@@ -1,5 +1,6 @@
 package hr.tvz.eindex.user;
 
+import hr.tvz.eindex.autohority.Authority;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,8 @@ public interface UserRepositoryJdbc {
     boolean deleteById(Long id);
     Optional<User> findOneByUsername(String username);
     Optional<User> addStudentToKolegij(long studentId, long kolegijId);
+
+    Optional<Authority> findUserAuthority(long id);
     Optional<User> save(User user);
     Optional<User> update(long id, User user);
 

@@ -44,9 +44,7 @@ public class User implements Serializable {
      private List<Kolegij> kolegijList;
 
 
-
-
-    public User(long id, String firstName, String lastName, String username, String email, String title, String password) {
+    public User(long id, String firstName, String lastName, String username, String email, String title, String password, Set<Authority> authorities) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,6 +52,7 @@ public class User implements Serializable {
         this.email = email;
         this.title = title;
         this.password = password;
+        this.authorities = authorities;
     }
 
     public User(){

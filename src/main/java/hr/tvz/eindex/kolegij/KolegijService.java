@@ -1,8 +1,6 @@
 package hr.tvz.eindex.kolegij;
 
-import hr.tvz.eindex.profesor.Profesor;
-import hr.tvz.eindex.profesor.ProfesorCommand;
-import hr.tvz.eindex.profesor.ProfesorDTO;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

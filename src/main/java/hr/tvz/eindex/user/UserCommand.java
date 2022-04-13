@@ -1,8 +1,11 @@
 package hr.tvz.eindex.user;
 
 
+import hr.tvz.eindex.autohority.Authority;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 public class UserCommand {
 
@@ -27,6 +30,8 @@ public class UserCommand {
 
     @NotBlank(message = "Must not be empty")
     private String password;
+
+    private Set<Authority> authority;
 
     public long getId() {
         return id;
@@ -82,5 +87,13 @@ public class UserCommand {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Set<Authority> getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(Set<Authority> authority) {
+        this.authority = authority;
     }
 }

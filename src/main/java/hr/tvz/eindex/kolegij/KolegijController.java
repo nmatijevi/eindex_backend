@@ -1,8 +1,6 @@
 package hr.tvz.eindex.kolegij;
 
 
-import hr.tvz.eindex.profesor.ProfesorCommand;
-import hr.tvz.eindex.profesor.ProfesorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
