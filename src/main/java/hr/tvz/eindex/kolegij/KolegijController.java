@@ -35,6 +35,12 @@ public class KolegijController {
     }
 
 
+    @GetMapping("/upisani-kolegiji/{id}) ")
+    public List<KolegijDTO> getKolegijByStudentsId(@PathVariable long id){
+        return kolegijService.getKolegijByStudentsId(id);
+    }
+
+
 
 
     @PostMapping

@@ -1,6 +1,7 @@
 package hr.tvz.eindex.kolegij;
 
 
+import hr.tvz.eindex.user.UserDTO;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -12,9 +13,11 @@ import java.util.stream.Collectors;
 public class KolegijServiceClass implements KolegijService, Serializable {
 
     private final JdbcKolegijRepository jdbcKolegijRepository;
+    private final KolegijRepoJpa kolegijRepoJpa;
 
-    public KolegijServiceClass(JdbcKolegijRepository jdbcKolegijRepository) {
+    public KolegijServiceClass(JdbcKolegijRepository jdbcKolegijRepository, KolegijRepoJpa kolegijRepoJpa) {
         this.jdbcKolegijRepository = jdbcKolegijRepository;
+        this.kolegijRepoJpa = kolegijRepoJpa;
     }
 
     @Override
@@ -36,10 +39,22 @@ public class KolegijServiceClass implements KolegijService, Serializable {
     public Optional<KolegijDTO> save(KolegijCommand command) {
         return jdbcKolegijRepository.save(mapCommandToKolegij(command)).map(this::mapKolegijToDTO);
     }
+
+    @Override
+    public List<KolegijDTO> getKolegijByStudentsId(long id) {
+        return jdbcKolegijRepository.findKolegijById(id).stream().map(this::mapKolegijToDTO).collect(Collectors.toList());
+    }
+
     private KolegijDTO mapKolegijToDTO(final Kolegij kolegij){
         return new KolegijDTO(kolegij.getId(), kolegij.getName());
     }
     private Kolegij mapCommandToKolegij(final KolegijCommand command){
         return new Kolegij(command.getId(), command.getName());
     }
+
+    @Override
+    public List<KolegijDTO> getKolegijByStudentId(long id) {
+        return kolegijRepoJpa.findAllByUserList_id(id).stream().map(this::mapKolegijToDTO).collect(Collectors.toList());
+    }
+
 }

@@ -56,6 +56,8 @@ public class UserController {
         return userService.getStudentsByKolegijId(id);
     }
 
+
+
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){
         return userService.findAllByTitle("Profesor");

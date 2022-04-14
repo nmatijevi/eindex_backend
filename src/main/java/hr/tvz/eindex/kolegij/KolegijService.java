@@ -18,4 +18,8 @@ public interface KolegijService {
     boolean deleteById(Long id);
 
     Optional<KolegijDTO> save(KolegijCommand command);
+
+    List<KolegijDTO> getKolegijByStudentsId(long id);
+
+    List<KolegijDTO> getKolegijByStudentId(long id);
 }
