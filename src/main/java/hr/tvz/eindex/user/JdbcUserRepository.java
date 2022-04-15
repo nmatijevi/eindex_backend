@@ -102,7 +102,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     @Override
     public Optional<User> save(final User user) {
         user.setId(saveStudentDetails(user));
-        Set<Authority> authorities = new HashSet<Authority>();
+        List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
         user.setAuthorities(authorities);

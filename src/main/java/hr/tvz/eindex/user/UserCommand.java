@@ -5,6 +5,7 @@ import hr.tvz.eindex.autohority.Authority;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 public class UserCommand {
@@ -31,7 +32,7 @@ public class UserCommand {
     @NotBlank(message = "Must not be empty")
     private String password;
 
-    private Set<Authority> authority;
+    private List<Authority> authority;
 
     public long getId() {
         return id;
@@ -89,11 +90,11 @@ public class UserCommand {
         this.username = username;
     }
 
-    public Set<Authority> getAuthority() {
+    public List<Authority> getAuthority() {
         return authority;
     }
 
-    public void setAuthority(Set<Authority> authority) {
+    public void setAuthority(List<Authority> authority) {
         this.authority = authority;
     }
 }

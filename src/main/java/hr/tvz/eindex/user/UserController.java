@@ -10,10 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping(value ="api/user", produces = "application/json")
@@ -72,7 +69,7 @@ public class UserController {
 
     @PostMapping("/add")
     public ResponseEntity<UserDTO> save(@Valid @RequestBody final UserCommand command){
-        Set<Authority> authorities = new HashSet<Authority>();
+        List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
         command.setAuthority(authorities);
@@ -91,7 +88,7 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<UserDTO> update(@PathVariable long id, @Valid @RequestBody final UserCommand command){
-        Set<Authority> authorities = new HashSet<Authority>();
+        List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
         command.setAuthority(authorities);
