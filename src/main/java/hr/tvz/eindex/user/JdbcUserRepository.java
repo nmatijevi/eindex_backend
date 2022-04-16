@@ -105,7 +105,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
-        user.setAuthorities(authorities);
+        user.setAuthorities(a);
         jdbcUserAuthority.update("Insert into user_authority (user_id, authority_id) VALUES (?, ?)", user.getId(), "2");
         return Optional.of(user);
     }
@@ -119,6 +119,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         values.put("email", user.getEmail());
         values.put("title", user.getTitle());
         values.put("authorities", user.getAuthorities());
+        values.put("auth", user.getAuthorities().getId());
         return studentInserter.executeAndReturnKey(values).longValue();
     }
 
@@ -143,13 +144,15 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
                 "lastName = ?," +
                 "username = ?," +
                 "email = ?," +
-                "title = ?" +
+                "title = ?," +
+                "auth = ?" +
                 "WHERE id = ?",
                 user.getFirstName(),
                 user.getLastName(),
                 user.getUsername(),
                 user.getEmail(),
                 user.getTitle(),
+                user.getAuthorities().getId(),
                 id
                 );
 

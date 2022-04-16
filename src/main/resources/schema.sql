@@ -1,3 +1,7 @@
+create table if not exists authority(
+     id identity,
+     name varchar(100) not null
+);
 create table if not exists User(
     id identity,
     firstName varchar(40) not null,
@@ -5,7 +9,8 @@ create table if not exists User(
     username varchar(40) not null,
     email varchar(40) not null,
     title varchar(20) not null,
-    password varchar(70) not null
+    password varchar(70) not null,
+    auth integer not null
 );
 
 create table if not exists Profesor(
@@ -29,10 +34,7 @@ create table if not exists  StudentKolegij(
     foreign key (kolegijid) REFERENCES Kolegij (id)
 );
 
-create table if not exists authority(
-    id identity,
-    name varchar(100) not null
-);
+
 
 create table if not exists user_authority(
     user_id bigint not null,

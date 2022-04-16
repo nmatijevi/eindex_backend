@@ -18,12 +18,7 @@ public class Authority implements Serializable {
 
     private String name;
 
-    @ManyToMany(targetEntity = User.class)
-    @JoinTable(
-            name = "user_authority",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "authority_id")}
-    )
+    @OneToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
     private List<User> users;
 
     public Authority(long id, String name) {

@@ -32,7 +32,7 @@ public class UserCommand {
     @NotBlank(message = "Must not be empty")
     private String password;
 
-    private List<Authority> authority;
+    private Authority authority;
 
     public long getId() {
         return id;
@@ -90,11 +90,11 @@ public class UserCommand {
         this.username = username;
     }
 
-    public List<Authority> getAuthority() {
+    public Authority getAuthority() {
         return authority;
     }
 
-    public void setAuthority(List<Authority> authority) {
+    public void setAuthority(Authority authority) {
         this.authority = authority;
     }
 }

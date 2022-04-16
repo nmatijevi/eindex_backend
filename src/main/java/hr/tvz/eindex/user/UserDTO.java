@@ -12,9 +12,9 @@ public class UserDTO {
     private String email;
     private String title;
     private String password;
-    private Set<String> authorities;
+    private String authorities;
 
-    public UserDTO(long id, String firstName, String lastName, String username,String email , String title, String password, Set<String> authorities) {
+    public UserDTO(long id, String firstName, String lastName, String username,String email , String title, String password, String authorities) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,7 +65,7 @@ public class UserDTO {
         this.email = email;
     }
 
-    public Set<String> getAuthorities() {
+    public String getAuthorities() {
         return authorities;
     }
 
@@ -85,7 +85,7 @@ public class UserDTO {
         this.password = password;
     }
 
-    public void setAuthorities(Set<String> authorities) {
+    public void setAuthorities(String authorities) {
         this.authorities = authorities;
     }
 }

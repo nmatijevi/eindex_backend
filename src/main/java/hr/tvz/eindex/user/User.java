@@ -32,8 +32,9 @@ public class User implements Serializable {
 
     private String password;
 
-    @ManyToMany(targetEntity = Authority.class, mappedBy = "users")
-    private List<Authority> authorities;
+    @ManyToOne
+    @JoinColumn(name = "auth")
+    private Authority authorities;
 
      @ManyToMany(targetEntity = Kolegij.class)
      @JoinTable(
@@ -44,7 +45,7 @@ public class User implements Serializable {
      private List<Kolegij> kolegijList;
 
 
-    public User(long id, String firstName, String lastName, String username, String email, String title, String password, List<Authority> authorities) {
+    public User(long id, String firstName, String lastName, String username, String email, String title, String password, Authority authorities) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -108,11 +109,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Authority> getAuthorities() {
+    public Authority getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
+    public void setAuthorities(Authority authorities) {
         this.authorities = authorities;
     }
 

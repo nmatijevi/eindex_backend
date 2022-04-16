@@ -44,7 +44,7 @@ public class UserServiceClass implements UserService, Serializable {
 
     private UserDTO mapUserToDTO(final User user){
         return new UserDTO(user.getId(), user.getFirstName() ,user.getLastName(), user.getUsername(), user.getEmail(), user.getTitle(), user.getPassword(),
-                user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet()));
+                user.getAuthorities().getName());
     }
 
 

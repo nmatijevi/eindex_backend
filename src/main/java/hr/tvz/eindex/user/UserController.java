@@ -72,7 +72,7 @@ public class UserController {
         List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
-        command.setAuthority(authorities);
+        command.setAuthority(a);
         return userService.save(command)
                 .map(
                         userDTO -> ResponseEntity
@@ -91,7 +91,7 @@ public class UserController {
         List<Authority> authorities = new ArrayList<>();
         Authority a = new Authority(2, "ROLE_USER");
         authorities.add(a);
-        command.setAuthority(authorities);
+        command.setAuthority(a);
         return userService.update(id, command)
                 .map(ResponseEntity::ok)
                 .orElseGet(
