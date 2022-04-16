@@ -22,4 +22,7 @@ public interface KolegijService {
     List<KolegijDTO> getKolegijByStudentsId(long id);
 
     List<KolegijDTO> getKolegijByStudentId(long id);
+
+    Optional addOcjena(int studentId, int ocjena, int kolegijId);
+
 }

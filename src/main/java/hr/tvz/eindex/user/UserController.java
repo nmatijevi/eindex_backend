@@ -53,7 +53,10 @@ public class UserController {
         return userService.getStudentsByKolegijId(id);
     }
 
-
+    @PostMapping("/grade/{studentId}/{ocjena}/{kolegijId}")
+    public void add(@PathVariable String studentId, @PathVariable String ocjena, @PathVariable String kolegijId){
+        userService.addOcjena(Integer.parseInt(studentId), Integer.parseInt(ocjena), Integer.parseInt(kolegijId));
+    }
 
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){

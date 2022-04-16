@@ -42,6 +42,10 @@ public class KolegijController {
 
 
 
+    @PostMapping("/grade/{studentId}/{ocjena}/{kolegijId}")
+    public void add(@PathVariable String studentId, @PathVariable String ocjena, @PathVariable String kolegijId){
+        kolegijService.addOcjena(Integer.parseInt(studentId), Integer.parseInt(ocjena), Integer.parseInt(kolegijId));
+    }
 
     @PostMapping
     public ResponseEntity<KolegijDTO> save(@Valid @RequestBody final KolegijCommand command){

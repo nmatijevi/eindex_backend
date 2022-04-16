@@ -29,7 +29,7 @@ create table if not exists  Kolegij(
 create table if not exists  StudentKolegij(
     studentid int(10) not null,
     kolegijid int(10) not null,
-    PRIMARY KEY (studentid, kolegijid),
+    ocjena int(10) not null,
     foreign key (studentid) REFERENCES User (id),
     foreign key (kolegijid) REFERENCES Kolegij (id)
 );

@@ -18,16 +18,41 @@ public class JdbcKolegijRepository implements KolegijRepositoryJdbc {
 
 
     private JdbcTemplate jdbc;
+    private JdbcTemplate jdbcOcjena;
     private SimpleJdbcInsert kolegijInserter;
 
-    public JdbcKolegijRepository(JdbcTemplate jdbc){
+    public JdbcKolegijRepository(JdbcTemplate jdbc, JdbcTemplate jdbcOcjena){
 
         this.jdbc = jdbc;
+        this.jdbcOcjena = jdbcOcjena;
+
         this.kolegijInserter = new SimpleJdbcInsert(jdbc)
                 .withTableName("Kolegij")
                 .usingGeneratedKeyColumns("id");
     }
 
+
+
+
+    @Override
+    public Optional addOcjenaToKolegij(long studentId, long ocjena, long kolegijId) {
+        int executed = jdbcOcjena.update("UPDATE StudentKolegij set" +
+                        "studentId = ?, " +
+                        "kolegijId = ?, " +
+                        "ocjena = ?",
+                "WHERE studentId = ?",
+                studentId,
+                kolegijId,
+                ocjena
+        );
+
+        if (executed > 0) {
+            return Optional.of(ocjena);
+        } else {
+            return Optional.empty();
+
+        }
+    }
     @Override
     public List<Kolegij> findAll() {
         return jdbc.query("select * from Kolegij", this::mapRowToKolegij);

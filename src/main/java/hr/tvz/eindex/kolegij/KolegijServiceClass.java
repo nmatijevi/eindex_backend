@@ -54,7 +54,11 @@ public class KolegijServiceClass implements KolegijService, Serializable {
 
     @Override
     public List<KolegijDTO> getKolegijByStudentId(long id) {
-        return kolegijRepoJpa.findAllByUserList_id(id).stream().map(this::mapKolegijToDTO).collect(Collectors.toList());
+            return kolegijRepoJpa.findAllByUserList_id(id).stream().map(this::mapKolegijToDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public Optional addOcjena(int studentId, int ocjena, int kolegijId) {
+        return jdbcKolegijRepository.addOcjenaToKolegij(studentId, ocjena, kolegijId);
+    }
 }

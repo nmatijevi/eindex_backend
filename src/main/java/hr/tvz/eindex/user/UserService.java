@@ -29,5 +29,7 @@ public interface UserService {
 
     Optional addStudentToKolegij(long studentId, long kolegijId);
 
-   // List<UserDTO> findStudentByTitle();
+    Optional addOcjena(int studentId, int ocjena, int kolegijId);
+
+    // List<UserDTO> findStudentByTitle();
 }

@@ -14,4 +14,5 @@ public interface KolegijRepositoryJdbc {
      List<Kolegij> findKolegijById(final Long id);
      boolean deleteById(Long id);
      Optional<Kolegij> save(final Kolegij kolegij);
+     Optional<Kolegij> addOcjenaToKolegij(long studentId, long ocjena, long kolegijId);
 }

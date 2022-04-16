@@ -21,6 +21,7 @@ public interface UserRepositoryJdbc {
     Optional<Authority> findUserAuthority(long id);
     Optional<User> save(User user);
     Optional<User> update(long id, User user);
+    Optional<User> addOcjenaToKolegij(long studentId, long kolegijId, long ocjenaId);
 
     //List<User> getStudentsByKolegijId(long id);
     List<User>findStudentByTitle();

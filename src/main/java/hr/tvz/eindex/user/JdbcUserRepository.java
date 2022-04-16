@@ -70,9 +70,33 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
 
     @Override
     public Optional addStudentToKolegij(long studentId, long kolegijId) {
-        return Optional.ofNullable(jdbcUserCategory.update("Insert into StudentKolegij (studentid, kolegijid) VALUES (?, ?)", studentId, kolegijId));
+        return Optional.ofNullable(jdbcUserCategory.update("Insert into StudentKolegij (studentid, kolegijid, ocjena) VALUES (?, ?, ?)", studentId, kolegijId, 0));
 
     }
+
+    @Override
+    public Optional addOcjenaToKolegij(long studentId, long ocjena, long kolegijId) {
+        int executed = jdbcUserCategory.update("UPDATE StudentKolegij set " +
+                        "studentid = ?, " +
+                        "kolegijid = ?, " +
+                        "ocjena = ?"+
+                "WHERE studentid = ?",
+                studentId,
+                kolegijId,
+                ocjena,
+                studentId
+        );
+
+        if (executed > 0) {
+            return Optional.of(ocjena);
+        } else {
+            return Optional.empty();
+
+        }
+    }
+
+
+
 
     @Override
     public boolean deleteById(Long id) {

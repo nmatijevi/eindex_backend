@@ -97,7 +97,12 @@ public class UserServiceClass implements UserService, Serializable {
         return userRepositoryJdbc.findUserAuthority(id);
     }
 
-/* @Override
+    @Override
+    public Optional addOcjena(int studentId, int kolegijId, int ocjenaId) {
+        return userRepositoryJdbc.addOcjenaToKolegij(studentId, kolegijId, ocjenaId);
+    }
+
+    /* @Override
     public List<UserDTO> findAllByTitle() {
         return userRepoJpa.findAllByTitle("Student").stream().map(this::mapUserToDTO).collect(Collectors.toList());
     }
