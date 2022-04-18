@@ -4,6 +4,7 @@ import hr.tvz.eindex.autohority.Authority;
 import hr.tvz.eindex.kolegij.KolegijDTO;
 import hr.tvz.eindex.security.DomainUserDetailsService;
 import hr.tvz.eindex.security.SecurityUtils;
+import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +58,13 @@ public class UserController {
     public void add(@PathVariable String studentId, @PathVariable String ocjena, @PathVariable String kolegijId){
         userService.addOcjena(Integer.parseInt(studentId), Integer.parseInt(ocjena), Integer.parseInt(kolegijId));
     }
+
+    @GetMapping("/grades/{studentid}/{kolegijid}")
+    public List<StudentKolegij> getOcjena(@PathVariable String studentid, @PathVariable String kolegijid){
+        return userService.getOcjena(Integer.parseInt(studentid),Integer.parseInt(kolegijid));
+    }
+
+
 
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){

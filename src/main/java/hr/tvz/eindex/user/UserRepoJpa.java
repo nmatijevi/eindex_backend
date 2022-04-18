@@ -16,4 +16,5 @@ public interface UserRepoJpa extends JpaRepository<User, Long> {
 
     List<User> findAllByTitle(String title);
     List<User> findAllByKolegijList_id(long id);
+    Optional<User> findOcjenaByKolegijList_id(long studentid);
 }

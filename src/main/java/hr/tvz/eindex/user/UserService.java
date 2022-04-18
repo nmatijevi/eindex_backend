@@ -1,6 +1,7 @@
 package hr.tvz.eindex.user;
 
 import hr.tvz.eindex.autohority.Authority;
+import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,8 @@ public interface UserService {
     Optional addStudentToKolegij(long studentId, long kolegijId);
 
     Optional addOcjena(int studentId, int ocjena, int kolegijId);
+
+    List<StudentKolegij> getOcjena(int studentId, int kolegijId);
 
     // List<UserDTO> findStudentByTitle();
 }

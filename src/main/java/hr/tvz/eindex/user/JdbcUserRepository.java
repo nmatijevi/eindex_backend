@@ -1,6 +1,7 @@
 package hr.tvz.eindex.user;
 
 import hr.tvz.eindex.autohority.Authority;
+import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.springframework.boot.autoconfigure.batch.BatchProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -97,6 +98,12 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
 
 
 
+    @Override
+    public List<StudentKolegij> getOcjena(long studentId, long kolegijId) {
+        return jdbc.query("SELECT * FROM StudentKolegij where studentid = ? AND kolegijid = ?", this::mapRowToStudentKolegij, studentId, kolegijId);
+    }
+
+
 
     @Override
     public boolean deleteById(Long id) {
@@ -115,6 +122,16 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         return Optional.ofNullable(jdbcUserAuthority.queryForObject("SELECT * FROM user_authority where user_id=?",this::mapRowToAuthority, id));
     }
 
+
+    private StudentKolegij mapRowToStudentKolegij(ResultSet rs, int rowNum) throws SQLException{
+        StudentKolegij studentKolegij = new StudentKolegij();
+        studentKolegij.setStudentId(rs.getLong("studentid"));
+        studentKolegij.setKolegijId(rs.getLong("kolegijid"));
+        studentKolegij.setOcjena(rs.getLong("ocjena"));
+
+        return studentKolegij;
+    }
+
     private Authority mapRowToAuthority(ResultSet rs, int rowNum) throws SQLException{
         Authority authority = new Authority();
         authority.setId(rs.getLong("id"));
@@ -122,6 +139,9 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
 
         return authority;
     }
+
+
+
 
     @Override
     public Optional<User> save(final User user) {

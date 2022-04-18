@@ -1,6 +1,7 @@
 package hr.tvz.eindex.user;
 
 import hr.tvz.eindex.autohority.Authority;
+import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -28,4 +29,5 @@ public interface UserRepositoryJdbc {
 
     List<User>findProfesorByTitle();
 
+    List<StudentKolegij> getOcjena(long studentId, long kolegijId);
 }

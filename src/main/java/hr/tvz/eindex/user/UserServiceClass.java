@@ -1,6 +1,7 @@
 package hr.tvz.eindex.user;
 
 import hr.tvz.eindex.autohority.Authority;
+import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -85,6 +86,11 @@ public class UserServiceClass implements UserService, Serializable {
     @Override
     public List<UserDTO> getStudentsByKolegijId(long id) {
         return userRepoJpa.findAllByKolegijList_id(id).stream().map(this::mapUserToDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<StudentKolegij> getOcjena(int studentId, int kolegijId) {
+        return userRepositoryJdbc.getOcjena(studentId, kolegijId);
     }
 
     @Override

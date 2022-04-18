@@ -47,7 +47,7 @@ public class KolegijController {
         kolegijService.addOcjena(Integer.parseInt(studentId), Integer.parseInt(ocjena), Integer.parseInt(kolegijId));
     }
 
-    @PostMapping
+    @PostMapping("/addCourse")
     public ResponseEntity<KolegijDTO> save(@Valid @RequestBody final KolegijCommand command){
         return kolegijService.save(command)
                 .map(
