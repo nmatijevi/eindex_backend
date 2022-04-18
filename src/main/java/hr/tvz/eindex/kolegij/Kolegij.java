@@ -5,6 +5,7 @@ import hr.tvz.eindex.user.User;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="Kolegij")
@@ -20,7 +21,7 @@ public class Kolegij {
 
 
     @ManyToMany(targetEntity = User.class, mappedBy = "kolegijList")
-    private List<User> userList;
+    private Set<User> userList;
 
 
 
@@ -49,11 +50,11 @@ public class Kolegij {
         this.name = name;
     }
 
-    public List<User> getUserList() {
+    public Set<User> getUserList() {
         return userList;
     }
 
-    public void setUserList(List<User> userList) {
+    public void setUserList(Set<User> userList) {
         this.userList = userList;
     }
 

@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @GetMapping("/grades/{studentid}/{kolegijid}")
-    public List<StudentKolegij> getOcjena(@PathVariable String studentid, @PathVariable String kolegijid){
+    public Optional<StudentKolegij> getOcjena(@PathVariable String studentid, @PathVariable String kolegijid){
         return userService.getOcjena(Integer.parseInt(studentid),Integer.parseInt(kolegijid));
     }
 

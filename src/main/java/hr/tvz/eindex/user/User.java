@@ -42,7 +42,7 @@ public class User implements Serializable {
              joinColumns = { @JoinColumn(name = "studentid") },
              inverseJoinColumns = { @JoinColumn(name = "kolegijid") }
      )
-     private List<Kolegij> kolegijList;
+     private Set<Kolegij> kolegijList;
 
 
     public User(long id, String firstName, String lastName, String username, String email, String title, String password, Authority authorities) {
@@ -125,11 +125,11 @@ public class User implements Serializable {
         this.username = username;
     }
 
-    public List<Kolegij> getKolegijList() {
+    public Set<Kolegij> getKolegijList() {
         return kolegijList;
     }
 
-    public void setKolegijList(List<Kolegij> kolegijList) {
+    public void setKolegijList(Set<Kolegij> kolegijList) {
         this.kolegijList = kolegijList;
     }
 

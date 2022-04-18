@@ -89,7 +89,7 @@ public class UserServiceClass implements UserService, Serializable {
     }
 
     @Override
-    public List<StudentKolegij> getOcjena(int studentId, int kolegijId) {
+    public Optional<StudentKolegij> getOcjena(int studentId, int kolegijId) {
         return userRepositoryJdbc.getOcjena(studentId, kolegijId);
     }
 

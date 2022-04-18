@@ -76,16 +76,19 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     }
 
     @Override
-    public Optional addOcjenaToKolegij(long studentId, long ocjena, long kolegijId) {
-        int executed = jdbcUserCategory.update("UPDATE StudentKolegij set " +
-                        "studentid = ?, " +
+    public Optional<Long> addOcjenaToKolegij(long studentId, long ocjena, long kolegijId) {
+        int executed = 0;
+         executed = jdbc.update("UPDATE StudentKolegij set " +
+
                         "kolegijid = ?, " +
                         "ocjena = ?"+
-                "WHERE studentid = ?",
-                studentId,
+                "WHERE studentid = ?" +
+                "AND kolegijid = ?",
+
                 kolegijId,
                 ocjena,
-                studentId
+                studentId,
+                 kolegijId
         );
 
         if (executed > 0) {
@@ -96,11 +99,35 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         }
     }
 
+    @Override
+    public Optional<User> update(long id, User user) {
+        int executed = jdbc.update("UPDATE user set " +
+                        "firstName = ?, " +
+                        "lastName = ?," +
+                        "username = ?," +
+                        "email = ?," +
+                        "title = ?," +
+                        "auth = ?" +
+                        "WHERE id = ?",
+                user.getFirstName(),
+                user.getLastName(),
+                user.getUsername(),
+                user.getEmail(),
+                user.getTitle(),
+                user.getAuthorities().getId(),
+                id
+        );
 
+        if(executed > 0){
+            return Optional.of(user);
+        }else{
+            return Optional.empty();
+        }
+    }
 
     @Override
-    public List<StudentKolegij> getOcjena(long studentId, long kolegijId) {
-        return jdbc.query("SELECT * FROM StudentKolegij where studentid = ? AND kolegijid = ?", this::mapRowToStudentKolegij, studentId, kolegijId);
+    public Optional<StudentKolegij> getOcjena(long studentId, long kolegijId) {
+        return Optional.ofNullable(jdbc.queryForObject("SELECT * FROM StudentKolegij where studentid = ? AND kolegijid = ?", this::mapRowToStudentKolegij, studentId, kolegijId));
     }
 
 
@@ -181,31 +208,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     }
 
 
-    @Override
-    public Optional<User> update(long id, User user) {
-        int executed = jdbc.update("UPDATE user set " +
-                "firstName = ?, " +
-                "lastName = ?," +
-                "username = ?," +
-                "email = ?," +
-                "title = ?," +
-                "auth = ?" +
-                "WHERE id = ?",
-                user.getFirstName(),
-                user.getLastName(),
-                user.getUsername(),
-                user.getEmail(),
-                user.getTitle(),
-                user.getAuthorities().getId(),
-                id
-                );
 
-       if(executed > 0){
-           return Optional.of(user);
-       }else{
-           return Optional.empty();
-       }
-    }
 
 
 
