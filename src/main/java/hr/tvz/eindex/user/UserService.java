@@ -34,5 +34,7 @@ public interface UserService {
 
     Optional<StudentKolegij> getOcjena(int studentId, int kolegijId);
 
+    Optional addPrijavaIspita(int kolegijId, int studentId, boolean prijava);
+
     // List<UserDTO> findStudentByTitle();
 }

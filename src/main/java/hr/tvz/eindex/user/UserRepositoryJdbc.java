@@ -30,4 +30,8 @@ public interface UserRepositoryJdbc {
     List<User>findProfesorByTitle();
 
     Optional<StudentKolegij> getOcjena(long studentId, long kolegijId);
+
+    Optional addPrijava (long kolegijid, long studentid, boolean prijava);
 }
+
+

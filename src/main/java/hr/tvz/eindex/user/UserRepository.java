@@ -20,4 +20,5 @@ public interface UserRepository {
     Optional<User> save(User user);
 
     Optional<User> update(long id, User user);
+
 }

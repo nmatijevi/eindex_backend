@@ -71,7 +71,8 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
 
     @Override
     public Optional addStudentToKolegij(long studentId, long kolegijId) {
-        return Optional.ofNullable(jdbcUserCategory.update("Insert into StudentKolegij (studentid, kolegijid, ocjena) VALUES (?, ?, ?)", studentId, kolegijId, 0));
+        boolean b = false;
+        return Optional.ofNullable(jdbcUserCategory.update("Insert into StudentKolegij (studentid, kolegijid, ocjena, prijava) VALUES (?, ?, ?, ?)", studentId, kolegijId, 0, b));
 
     }
 
@@ -122,6 +123,29 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
             return Optional.of(user);
         }else{
             return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional addPrijava(long kolegijid, long studentid, boolean prijava) {
+       int executed = jdbc.update("UPDATE StudentKolegij set " +
+
+                        "kolegijid = ?, " +
+                        "prijava = ? "+
+                        "WHERE studentid = ?" +
+                        "AND kolegijid = ?",
+
+                kolegijid,
+                prijava,
+                studentid,
+                kolegijid
+        );
+
+        if (executed > 0) {
+            return Optional.of(kolegijid);
+        } else {
+            return Optional.empty();
+
         }
     }
 

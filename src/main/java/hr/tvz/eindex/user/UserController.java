@@ -6,6 +6,8 @@ import hr.tvz.eindex.security.DomainUserDetailsService;
 import hr.tvz.eindex.security.SecurityUtils;
 import hr.tvz.eindex.studentKolegij.StudentKolegij;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +30,12 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @GetMapping
     public List<UserDTO> getAllStudent(){
+        logger.info("Dobili smo sve studente");
         return userService.findAll();
     }
 
@@ -46,6 +52,7 @@ public class UserController {
 
     @GetMapping("/allStudents")
     public List<UserDTO> getStudentByTitle(){
+        logger.info("Dobili samo studente");
         return userService.findAllByTitle("Student");
     }
 
@@ -64,7 +71,10 @@ public class UserController {
         return userService.getOcjena(Integer.parseInt(studentid),Integer.parseInt(kolegijid));
     }
 
-
+    @PostMapping("/setExam/{kolegijId}/{studentId}/{prijava}")
+    public void addExam(@PathVariable String kolegijId,  @PathVariable String studentId, @PathVariable String prijava){
+        userService.addPrijavaIspita( Integer.parseInt(kolegijId), Integer.parseInt(studentId), Boolean.parseBoolean(prijava));
+    }
 
     @GetMapping("/allProfessors")
     public List<UserDTO> getProfesorByTitle(){

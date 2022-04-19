@@ -29,16 +29,18 @@ INSERT INTO Kolegij(id,name) VALUES
 (2,'Matematika'),
 (3,'Web aplikacije u Javo'),
 (4,'Objektno orijentirano programiranej'),
-(5,'Programiranje u Javi');
+(5,'Programiranje u Javi'),
+(6, 'Kineziološka kultura'),
+(7, 'Matematika 2');
 
-INSERT INTO StudentKolegij(studentid, kolegijid, ocjena) VALUES
-(1,1,0),
-(1,5,0),
-(2,1,0),
-(2,2,0),
-(3,3,0),
-(4,4,0),
-(5,5,0);
+INSERT INTO StudentKolegij(studentid, kolegijid, ocjena, prijava) VALUES
+(1,1,0, FALSE),
+(1,5,0, FALSE),
+(2,1,0, FALSE),
+(2,2,0, FALSE),
+(3,3,0, FALSE),
+(4,4,0, FALSE),
+(5,5,0, FALSE);
 
 INSERT INTO authority(id, name) VALUES
 (1, 'ROLE_ADMIN'),
