@@ -179,6 +179,7 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
         studentKolegij.setStudentId(rs.getLong("studentid"));
         studentKolegij.setKolegijId(rs.getLong("kolegijid"));
         studentKolegij.setOcjena(rs.getLong("ocjena"));
+        studentKolegij.setPrijava(rs.getBoolean("prijava"));
 
         return studentKolegij;
     }
