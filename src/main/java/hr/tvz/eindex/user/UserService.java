@@ -33,6 +33,7 @@ public interface UserService {
     Optional addOcjena(int studentId, int ocjena, int kolegijId);
 
     Optional<StudentKolegij> getOcjena(int studentId, int kolegijId);
+    List<StudentKolegij> getOcjenaArray(int studentId, int kolegijId);
 
     Optional addPrijavaIspita(int kolegijId, int studentId, boolean prijava);
 

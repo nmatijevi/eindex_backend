@@ -155,6 +155,10 @@ public class JdbcUserRepository implements UserRepositoryJdbc {
     }
 
 
+    @Override
+    public List<StudentKolegij> getOcjenaArray(long studentId, long kolegijId) {
+        return jdbc.query("SELECT * FROM StudentKolegij where studentid = ? AND kolegijid = ?", this::mapRowToStudentKolegij, studentId, kolegijId);
+    }
 
     @Override
     public boolean deleteById(Long id) {

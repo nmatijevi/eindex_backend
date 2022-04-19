@@ -119,4 +119,9 @@ public class UserServiceClass implements UserService, Serializable {
     public Optional addPrijavaIspita(int kolegijId, int studentId, boolean prijava) {
         return userRepositoryJdbc.addPrijava(kolegijId,studentId,prijava);
     }
+
+    @Override
+    public List<StudentKolegij> getOcjenaArray(int studentId, int kolegijId) {
+        return userRepositoryJdbc.getOcjenaArray(studentId, kolegijId);
+    }
 }

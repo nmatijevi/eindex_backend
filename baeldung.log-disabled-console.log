@@ -1,0 +1,83 @@
+2022-04-19 14:13:31.119  INFO 15496 --- [main] h.t.e.EIndexApplication                  : Starting EIndexApplication using Java 15 on DESKTOP-QKA415C with PID 15496 (D:\FAX\eIndex\target\classes started by Nikola in D:\FAX\eIndex)
+2022-04-19 14:13:31.126  INFO 15496 --- [main] h.t.e.EIndexApplication                  : The following 1 profile is active: "dev"
+2022-04-19 14:13:31.647  INFO 15496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-04-19 14:13:31.695  INFO 15496 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 3 JPA repository interfaces.
+2022-04-19 14:13:32.091  INFO 15496 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-04-19 14:13:32.097  INFO 15496 --- [main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-04-19 14:13:32.098  INFO 15496 --- [main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.58]
+2022-04-19 14:13:32.191  INFO 15496 --- [main] o.a.c.c.C.[.[.[/]                        : Initializing Spring embedded WebApplicationContext
+2022-04-19 14:13:32.192  INFO 15496 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1038 ms
+2022-04-19 14:13:32.217  INFO 15496 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-04-19 14:13:32.279  INFO 15496 --- [main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-04-19 14:13:32.287  INFO 15496 --- [main] o.s.b.a.h.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2022-04-19 14:13:32.385  WARN 15496 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-04-19 14:13:33.106  INFO 15496 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-04-19 14:13:33.167 DEBUG 15496 --- [main] o.s.w.f.CorsFilter                       : Filter 'corsFilter' configured for use
+2022-04-19 14:13:33.555  WARN 15496 --- [main] o.s.s.c.a.w.b.WebSecurity                : You are asking Spring Security to ignore Ant [pattern='/**', OPTIONS]. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-04-19 14:13:33.555  INFO 15496 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure Ant [pattern='/**', OPTIONS] with []
+2022-04-19 14:13:33.557  WARN 15496 --- [main] o.s.s.c.a.w.b.WebSecurity                : You are asking Spring Security to ignore Ant [pattern='/h2-console/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+2022-04-19 14:13:33.557  INFO 15496 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will secure Ant [pattern='/h2-console/**'] with []
+2022-04-19 14:13:33.585  INFO 15496 --- [main] o.s.s.w.DefaultSecurityFilterChain       : Will not secure any request
+2022-04-19 14:13:33.663 DEBUG 15496 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2022-04-19 14:13:33.706 DEBUG 15496 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 22 mappings in 'requestMappingHandlerMapping'
+2022-04-19 14:13:33.742 DEBUG 15496 --- [main] o.s.w.s.h.SimpleUrlHandlerMapping        : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2022-04-19 14:13:33.753 DEBUG 15496 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2022-04-19 14:13:33.861  INFO 15496 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path ''
+2022-04-19 14:13:33.869  INFO 15496 --- [main] h.t.e.EIndexApplication                  : Started EIndexApplication in 3.136 seconds (JVM running for 3.933)
+2022-04-19 14:13:51.820  INFO 15496 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/]                        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-19 14:13:51.820  INFO 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-04-19 14:13:51.820 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected StandardServletMultipartResolver
+2022-04-19 14:13:51.820 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected AcceptHeaderLocaleResolver
+2022-04-19 14:13:51.820 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected FixedThemeResolver
+2022-04-19 14:13:51.821 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@51f009ef
+2022-04-19 14:13:51.821 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Detected org.springframework.web.servlet.support.SessionFlashMapManager@45964b9e
+2022-04-19 14:13:51.821 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2022-04-19 14:13:51.821  INFO 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
+2022-04-19 14:13:51.853 DEBUG 15496 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : POST "/api/authenticate", parameters={}
+2022-04-19 14:13:51.855 DEBUG 15496 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.security.web.LoginController#authenticate(LoginDTO)
+2022-04-19 14:13:51.900 DEBUG 15496 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [hr.tvz.eindex.security.web.LoginController$LoginDTO@1457780e]
+2022-04-19 14:13:52.225 DEBUG 15496 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Failed to complete request: org.springframework.security.authentication.BadCredentialsException: Bad credentials
+2022-04-19 14:13:54.384 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet                : POST "/api/authenticate", parameters={}
+2022-04-19 14:13:54.385 DEBUG 15496 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.security.web.LoginController#authenticate(LoginDTO)
+2022-04-19 14:13:54.386 DEBUG 15496 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [hr.tvz.eindex.security.web.LoginController$LoginDTO@2bc1db42]
+2022-04-19 14:13:54.547 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-04-19 14:13:54.547 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [hr.tvz.eindex.security.web.LoginController$JWTToken@7461b960]
+2022-04-19 14:13:54.550 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:54.579 DEBUG 15496 --- [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet                : GET "/api/user/current-user", parameters={}
+2022-04-19 14:13:54.579 DEBUG 15496 --- [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getCurrentUser()
+2022-04-19 14:13:54.583 DEBUG 15496 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:54.584 DEBUG 15496 --- [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [hr.tvz.eindex.user.UserDTO@6665ca6f]
+2022-04-19 14:13:54.586 DEBUG 15496 --- [http-nio-8080-exec-6] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:54.599 DEBUG 15496 --- [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet                : GET "/api/user/current-user", parameters={}
+2022-04-19 14:13:54.599 DEBUG 15496 --- [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getCurrentUser()
+2022-04-19 14:13:54.601 DEBUG 15496 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:54.601 DEBUG 15496 --- [http-nio-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [hr.tvz.eindex.user.UserDTO@103d2a65]
+2022-04-19 14:13:54.603 DEBUG 15496 --- [http-nio-8080-exec-7] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:54.637 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet                : GET "/kolegiji", parameters={}
+2022-04-19 14:13:54.637 DEBUG 15496 --- [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.kolegij.KolegijController#getAllKolegij()
+2022-04-19 14:13:54.637 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : GET "/api/user/allProfessors", parameters={}
+2022-04-19 14:13:54.638 DEBUG 15496 --- [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getProfesorByTitle()
+2022-04-19 14:13:54.638  INFO 15496 --- [http-nio-8080-exec-1] h.t.e.u.UserController                   : metoda getProfesorByTitle radi
+2022-04-19 14:13:54.641 DEBUG 15496 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : GET "/api/user/allStudents", parameters={}
+2022-04-19 14:13:54.641 DEBUG 15496 --- [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getStudentByTitle()
+2022-04-19 14:13:54.641  INFO 15496 --- [http-nio-8080-exec-2] h.t.e.u.UserController                   : metoda getStudentByTitle radi
+2022-04-19 14:13:54.643 DEBUG 15496 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:54.644 DEBUG 15496 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:54.644 DEBUG 15496 --- [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Writing [[hr.tvz.eindex.user.UserDTO@21c22e6, hr.tvz.eindex.user.UserDTO@54b12ade, hr.tvz.eindex.user.UserDTO (truncated)...]
+2022-04-19 14:13:54.645 DEBUG 15496 --- [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Writing [[hr.tvz.eindex.user.UserDTO@5d799fd8, hr.tvz.eindex.user.UserDTO@53fbe847, hr.tvz.eindex.user.UserDT (truncated)...]
+2022-04-19 14:13:54.645 DEBUG 15496 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json, application/json, application/*+json]
+2022-04-19 14:13:54.645 DEBUG 15496 --- [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing [[hr.tvz.eindex.kolegij.KolegijDTO@105741f3, hr.tvz.eindex.kolegij.KolegijDTO@44f6650d, hr.tvz.eindex (truncated)...]
+2022-04-19 14:13:54.646 DEBUG 15496 --- [http-nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:54.646 DEBUG 15496 --- [http-nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:54.647 DEBUG 15496 --- [http-nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:55.490 DEBUG 15496 --- [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet                : GET "/api/user/current-user", parameters={}
+2022-04-19 14:13:55.490 DEBUG 15496 --- [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getCurrentUser()
+2022-04-19 14:13:55.492 DEBUG 15496 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:55.492 DEBUG 15496 --- [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [hr.tvz.eindex.user.UserDTO@43d42949]
+2022-04-19 14:13:55.493 DEBUG 15496 --- [http-nio-8080-exec-4] o.s.w.s.DispatcherServlet                : Completed 200 OK
+2022-04-19 14:13:55.517 DEBUG 15496 --- [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet                : GET "/api/user/allStudents", parameters={}
+2022-04-19 14:13:55.517 DEBUG 15496 --- [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to hr.tvz.eindex.user.UserController#getStudentByTitle()
+2022-04-19 14:13:55.518  INFO 15496 --- [http-nio-8080-exec-5] h.t.e.u.UserController                   : metoda getStudentByTitle radi
+2022-04-19 14:13:55.521 DEBUG 15496 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json]
+2022-04-19 14:13:55.521 DEBUG 15496 --- [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing [[hr.tvz.eindex.user.UserDTO@5eea87f6, hr.tvz.eindex.user.UserDTO@400b4421, hr.tvz.eindex.user.UserDT (truncated)...]
+2022-04-19 14:13:55.523 DEBUG 15496 --- [http-nio-8080-exec-5] o.s.w.s.DispatcherServlet                : Completed 200 OK
