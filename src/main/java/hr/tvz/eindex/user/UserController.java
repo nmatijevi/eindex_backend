@@ -105,10 +105,11 @@ public class UserController {
     @PostMapping("/addStudent/{studentId}/{kolegijId}")
     public void add(@PathVariable String studentId, @PathVariable String kolegijId){
         logger.info("metoda addStudent radi");
-
         userService.addStudentToKolegij(Integer.parseInt(kolegijId), Integer.parseInt(studentId));
 
     }
+
+
 
 
     @PostMapping("/add")
